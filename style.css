@@ -8,8 +8,9 @@ html {
 }
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
-  line-height: 1.6;
+  line-height: 2.0;
   font-weight: 400;
+  border-radius: 25px;
   font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #FFFFFF;
 }
@@ -20,7 +21,7 @@ body {
 a {
   font-weight: normal;
   text-decoration: none; 
-  color:#EF6D3D;
+  color:#d11a13;
 }
 a:focus {
   outline: thin dotted;
@@ -93,29 +94,75 @@ blockquote p:last-child {
 /* Full size background image */
 html, #container, .inner { background-color:transparent;}
 html {
-  background:url(background.jpg) center center no-repeat fixed;
-  background-size:cover;
+  height: 100vh;
+	--u: 10px;
+	--c1: #eabdc5;
+	--c2: #6d2a;
+	--c3: #464f84;
+	--gp: 50%/ calc(var(--u) * 16.9) calc(var(--u) * 12.8);
+	background: 
+		conic-gradient(from 122deg at 50% 85.15%, var(--c2) 0 58deg, var(--c3) 0 116deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 122deg at 50% 72.5%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 58deg at 82.85% 50%, var(--c3) 0 64deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 58deg at 66.87% 50%, var(--c1) 0 64deg, var(--c2) 0 130deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 238deg at 17.15% 50%, var(--c2) 0 64deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 172deg at 33.13% 50%, var(--c3) 0 66deg, var(--c1) 0 130deg, #fff0 0 100%) var(--gp),
+		linear-gradient(98deg, var(--c3) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
+		linear-gradient(-98deg, var(--c2) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
+		conic-gradient(from -58deg at 50.25% 14.85%, var(--c3) 0 58deg, var(--c2) 0 116deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from -58deg at 50% 28.125%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
+		linear-gradient(90deg, var(--c2) 0 50%, var(--c3) 0 100%) var(--gp);
+  /*background:url(background.jpg) center center no-repeat fixed;
+  background-size:cover;*/
 }
 body {
   max-width:800px;
   margin:25px auto;
 }
-header, #content, footer { 
+header{ 
+  background: rgba(0,0,0,.8); 
+  padding:50px 25px 25px 25px;
+  color:#FFFFFF; 
+  border-radius: 25px 25px 0 0;
+}
+
+#content{ 
   background: rgba(0,0,0,.8); 
   padding:25px;
   color:#FFFFFF; 
 }
 
+footer { 
+  background: rgba(0,0,0,.8); 
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding:25px;
+  color:#FFFFFF; 
+  border-radius: 0 0 25px 25px;
+}
+
 /* Menu Links */
 ul.main-menu {
+  width: 100%;
+  display: table;
+  text-align: center;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   justify-content: left;
   list-style: none;
 }
+
+ul.main-menu li{
+  display: inline-block;
+}
+
 ul.main-menu li a {
+  display: block;
   margin-right:20px;
   font-size:2.0rem;
   border-bottom: solid transparent 3px;
@@ -126,7 +173,7 @@ ul.main-menu li a:hover {
 }
 ul.main-menu li a.active {
   color:#FFFFFF;
-  border-bottom-color:#EF6D3D;
+  border-bottom-color:#d11a13;
 }
 
 /* Utility classes */
