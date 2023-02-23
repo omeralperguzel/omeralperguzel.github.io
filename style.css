@@ -11,7 +11,8 @@ body {
   line-height: 2.0;
   font-weight: 400;
   border-radius: 25px;
-  font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat";
+  /*font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   color: #FFFFFF;
 }
 
@@ -134,19 +135,19 @@ header{
 
 footer { 
   background: rgba(0,0,0,.8); 
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
   padding:25px;
   color:#FFFFFF; 
   border-radius: 0 0 25px 25px;
+  text-align: center;
+
 }
 
 /* Menu Links */
 ul.main-menu {
   width: 100%;
   display: table;
-  text-align: center;
   margin: 0;
   padding: 0;
   display: inline-flex;
@@ -166,14 +167,14 @@ ul.main-menu li a {
   margin-right:20px;
   font-size:2.0rem;
   border-bottom: solid transparent 3px;
-  color:#cfd2da;
+  color:#aab1c4;
 }
 ul.main-menu li a:hover {
   color:#FFFFFF;
 }
 ul.main-menu li a.active {
   color:#FFFFFF;
-  border-bottom-color:#d11a13;
+  /*border-bottom-color:#d11a13;*/
 }
 
 /* Utility classes */
@@ -184,5 +185,42 @@ ul.main-menu li a.active {
   display:block;
 }
 
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+  border-radius: 0 0 15px 15px;
+}
 
+div.gallerysmall {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 150px;
+  border-radius: 0 0 15px 15px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallerysmall:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.gallerysmall img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
 
