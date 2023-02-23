@@ -98,7 +98,7 @@ html {
   height: 100vh;
 	--u: 10px;
 	--c1: #eabdc5;
-	--c2: #6d2a;
+	--c2: rgb(103, 221, 34);
 	--c3: #464f84;
 	--gp: 50%/ calc(var(--u) * 16.9) calc(var(--u) * 12.8);
 	background: 
