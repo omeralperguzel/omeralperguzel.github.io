@@ -199,11 +199,25 @@ div.gallerysmall {
   border-radius: 0 0 15px 15px;
 }
 
+div.galleryalt1 {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: (730)px;
+  height: 200px;
+  display: flex;
+  border-radius: 0 15px 15px 0;
+}
+
 div.gallery:hover {
   border: 1px solid #777;
 }
 
 div.gallerysmall:hover {
+  border: 1px solid #777;
+}
+
+div.galleryalt1:hover {
   border: 1px solid #777;
 }
 
@@ -217,9 +231,21 @@ div.gallerysmall img {
   height: auto;
 }
 
+div.galleryalt1 img {
+  width: auto;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
 div.desc {
   padding: 15px;
   text-align: center;
+}
+
+div.desc2 {
+  padding-left: 30px;
+  padding-top: 20px;
+  text-align: left;
 }
 
 .flex-container {
