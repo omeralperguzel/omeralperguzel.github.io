@@ -209,6 +209,15 @@ div.galleryalt1 {
   border-radius: 0 15px 15px 0;
 }
 
+div.galleryalt2 {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: (730)px;
+  display: flex;
+  border-radius: 15px 15px 15px 15px;
+}
+
 div.gallery:hover {
   border: 1px solid #777;
 }
@@ -218,6 +227,10 @@ div.gallerysmall:hover {
 }
 
 div.galleryalt1:hover {
+  border: 1px solid #777;
+}
+
+div.galleryalt2:hover {
   border: 1px solid #777;
 }
 
@@ -237,6 +250,13 @@ div.galleryalt1 img {
   flex-wrap: wrap;
 }
 
+div.galleryalt2 img {
+  margin: 20px;
+  width: 130px;
+  height: 130px;
+  flex-wrap: wrap;
+}
+
 div.desc {
   padding: 15px;
   text-align: center;
@@ -246,6 +266,15 @@ div.desc2 {
   padding-left: 30px;
   padding-top: 20px;
   text-align: left;
+}
+
+div.desc2alt1 {
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  flex-wrap: wrap;
 }
 
 .flex-container {
