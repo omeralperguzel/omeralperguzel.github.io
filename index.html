@@ -14,6 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
    
     <!-- Custom styles -->
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -50,13 +51,66 @@
       <div class="inner">
         <div id="content"> 
           
+          <!-- Home Page -->
           <div id="home" class="content-region hide">
-            <h2>Ana Sayfa</h2>
-            <p>
-              Siteye hoş geldiniz.
+            <div id="containerhomeanimation">
+              <h1 style="font-family: Source Code Pro">Adım Ömer Alper</h1>
+              <div id="text"></div><div id="cursor"></div>
+            </div>
+            <!--<h1anim style="font-family: Source Code Pro" id="text"></h1anim>-->
+
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooo
             </p>
+
+            <div class="center">
+              <div class="galleryhome">
+                <div class="desc3"></div>
+                  <a target="_blank" href="#codeproject">
+                    <img src="homepage/icons8-code.gif" alt="Code" width="600" height="400">
+                    <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400" class="hover">-->
+                  </a>
+                  <div class="desc3">
+                    <h3a>Kodlama</h3a>
+                    <p></p>
+                    <p>Kodlarken Java kullanıyorum. Diğer yandan C# ve Python öğreniyorum. Oyun geliştirme ve yapay zekaya ilgim var.</p>
+                  </div>
+                </div>
+  
+                <div class="galleryhome">
+                  <div class="desc3"></div>
+                    <a target="_blank" href="#design">
+                      <img src="homepage/icons8-design.gif" alt="Design" width="600" height="400">
+                      <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400">-->
+                    </a>
+                    <div class="desc3">
+                      <h3a>Tasarım</h3a>
+                      <p></p>
+                      <p>Figma, Photoshop, Illustrator kullanıyorum. Arayüz tasarımı, afiş tasarımı ve başka pek çok şeyle ilgileniyorum.</p>
+                    </div>
+                  </div>
+  
+                  <div class="galleryhome">
+                    <div class="desc3"></div>
+                      <a target="_blank" href="#drawing">
+                        <img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400">
+                        <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400">-->
+                      </a>
+                      <div class="desc3">
+                        <h3a>Çizim</h3a>
+                        <p></p>
+                        <p>Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.</p>
+                      </div>
+                    </div>
+            </div>
+
+                  <p class="hidden" style="visibility: hidden;">
+                    oooooooooooooooooooooooooooooooo
+                  </p>
+
           </div>
           
+          <!-- About Me Page -->
           <div id="about" class="content-region hide">
             <h2>Hakkımda</h2>
             <p>
@@ -508,7 +562,9 @@
     </footer>
     
     <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js">
+
+    </script>
     
   </body>
 </html>
