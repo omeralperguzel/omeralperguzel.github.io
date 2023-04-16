@@ -352,6 +352,7 @@ div.desc3 {
 
 #containerhomeanimation {
 	text-align: center;
+  min-height: 130px;
 }
 
 #text {
