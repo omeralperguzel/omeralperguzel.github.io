@@ -25,6 +25,26 @@
     <!-- Want to add Bootstrap? -->
     <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
     
+    <style>
+      #orientationPrompt {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: white;
+          font-size: 1.5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          z-index: 9999;
+          padding: 20px;
+      }
+    </style>
+
   </head>
   
   <body>
@@ -45,11 +65,10 @@
         <li><a href="#certificates">Sertifikalar</a></li>
       </ul>                 
     </header>
-   
+
     <div id="container">
       <div class="inner">
         <div id="content"> 
-          
           <!-- Home Page -->
           <div id="home" class="content-region hide">
             <div id="containerhomeanimation">
@@ -687,6 +706,10 @@
       </div>
     </div>
 
+    <div id="orientationPrompt">
+      Please rotate your device to landscape mode for the best experience.
+    </div>
+
     <footer>  
       <div class="flex-container">
         <div><a href="https://github.com/omeralperguzel"><img src="contacts/icons8-github-480.png" height="45"></a></div>
@@ -704,8 +727,9 @@
     
     <!-- Load additional JS scripts here -->
     <script type="text/javascript" src="script.js">
-
+      
     </script>
+  
     
   </body>
 </html>

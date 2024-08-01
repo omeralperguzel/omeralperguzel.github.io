@@ -98,3 +98,25 @@ function Delete() {
 
 // Start the typing effect on load
 _INTERVAL_VAL = setInterval(Type, 100);
+
+function checkOrientation() {
+	const orientationPrompt = document.getElementById('orientationPrompt');
+	const aspectRatio = window.innerHeight / window.innerWidth;
+
+	if (aspectRatio > 5 / 3) {
+		// Show the prompt if the aspect ratio is greater than 4:3
+		orientationPrompt.style.display = 'flex';
+	} else {
+		// Hide the prompt otherwise
+		orientationPrompt.style.display = 'none';
+	}
+}
+
+// Check orientation on load
+window.addEventListener('load', checkOrientation);
+
+// Check orientation on resize
+window.addEventListener('resize', checkOrientation);
+
+// Check orientation on orientation change (for mobile devices)
+window.addEventListener('orientationchange', checkOrientation);
