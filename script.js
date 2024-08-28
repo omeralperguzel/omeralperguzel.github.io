@@ -103,7 +103,7 @@ function checkOrientation() {
 	const orientationPrompt = document.getElementById('orientationPrompt');
 	const aspectRatio = window.innerHeight / window.innerWidth;
 
-	orientationPrompt.style.display = 'none';
+	//orientationPrompt.style.display = 'none';
 
 	if (aspectRatio > 5 / 3) {
 		// Show the prompt if the aspect ratio is greater than 4:3
