@@ -102,10 +102,10 @@ _INTERVAL_VAL = setInterval(Type, 100);
 function checkOrientation() {
 	const orientationPrompt = document.getElementById('orientationPrompt');
 	if (!orientationPrompt) return; // Prevent errors if element doesn't exist
-	
-	const aspectRatio = window.innerHeight / window.innerWidth;
 
 	//orientationPrompt.style.display = 'none';
+
+	const aspectRatio = 1;
 
 	if (aspectRatio > 5 / 3) {
 		// Show the prompt if the aspect ratio is greater than 4:3
@@ -113,7 +113,10 @@ function checkOrientation() {
 	} else {
 		// Hide the prompt otherwise
 		orientationPrompt.style.display = 'none';
-	} 
+	}
+
+	aspectRatio = window.innerHeight / window.innerWidth;
+
 }
 
 // Check orientation on load
