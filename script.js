@@ -1,59 +1,38 @@
-// Wait for the document to load before running the script 
-(function ($) {
-  
-  // We use some Javascript and the URL #fragment to hide/show different parts of the page
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Linking_to_an_element_on_the_same_page
-  $(window).on('load hashchange', function(){
-    
-    // First hide all content regions, then show the content-region specified in the URL hash 
-    // (or if no hash URL is found, default to first menu item)
-    $('.content-region').hide();
-    
-    // Remove any active classes on the main-menu
-    $('.main-menu a').removeClass('active');
-    var region = location.hash.toString() || $('.main-menu a:first').attr('href');
-    
-    // Now show the region specified in the URL hash
-    $(region).show();
-    
-    // Highlight the menu link associated with this region by adding the .active CSS class
-    $('.main-menu a[href="'+ region +'"]').addClass('active'); 
-
-    // Alternate method: Use AJAX to load the contents of an external file into a div based on URL fragment
-    // This will extract the region name from URL hash, and then load [region].html into the main #content div
-    // var region = location.hash.toString() || '#first';
-    // $('#content').load(region.slice(1) + '.html')
-    
-  });
-  
-})(jQuery);
-
-// List of sentences
+// List of sentences for typing animation
 var _CONTENT = [ 
 	"Ben kodluyorum.", 
 	"Ben tasarlıyorum.", 
 	"Ben çiziyorum."
 ];
 
-// Current sentence being processed
+// Variables for typing effect
 var _PART = 0;
-
-// Character number of the current sentence being processed 
 var _PART_INDEX = 0;
-
-// Holds the handle returned from setInterval
 var _INTERVAL_VAL;
+var _ELEMENT = null;
+var _CURSOR = null;
 
-// Element that holds the text
-var _ELEMENT = document.querySelector("#text");
-
-// Cursor element 
-var _CURSOR = document.querySelector("#cursor");
+// Initialize typing effect
+function initTypingEffect() {
+  _ELEMENT = document.querySelector("#text");
+  _CURSOR = document.querySelector("#cursor");
+  
+  if (_ELEMENT && _CURSOR) {
+    _PART = 0;
+    _PART_INDEX = 0;
+    if (_INTERVAL_VAL) {
+      clearInterval(_INTERVAL_VAL);
+    }
+    _INTERVAL_VAL = setInterval(Type, 100);
+  }
+}
 
 // Implements typing effect
 function Type() { 
-	// Get substring with 1 characater added
-	var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+  if (!_ELEMENT || !_CURSOR) return;
+  
+	// Get substring with 1 character added
+	var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
 	_ELEMENT.innerHTML = text;
 	_PART_INDEX++;
 
@@ -71,8 +50,10 @@ function Type() {
 
 // Implements deleting effect
 function Delete() {
-	// Get substring with 1 characater deleted
-	var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+  if (!_ELEMENT || !_CURSOR) return;
+  
+	// Get substring with 1 character deleted
+	var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
 	_ELEMENT.innerHTML = text;
 	_PART_INDEX--;
 
@@ -96,34 +77,75 @@ function Delete() {
 	}
 }
 
-// Start the typing effect on load
-_INTERVAL_VAL = setInterval(Type, 100);
-
-function checkOrientation() {
-	const orientationPrompt = document.getElementById('orientationPrompt');
-	if (!orientationPrompt) return; // Prevent errors if element doesn't exist
-
-	//orientationPrompt.style.display = 'none';
-
-	const aspectRatio = 1;
-
-	if (aspectRatio > 5 / 3) {
-		// Show the prompt if the aspect ratio is greater than 4:3
-		orientationPrompt.style.display = 'flex';
-	} else {
-		// Hide the prompt otherwise
-		orientationPrompt.style.display = 'none';
-	}
-
-	aspectRatio = window.innerHeight / window.innerWidth;
-
+// Reveal animations when scrolling
+function revealOnScroll() {
+  const sections = document.querySelectorAll('.section-fade');
+  
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (sectionTop < windowHeight - 150) {
+      section.classList.add('appear');
+    }
+  });
 }
 
-// Check orientation on load
-window.addEventListener('load', checkOrientation);
-
-// Check orientation on resize
-window.addEventListener('resize', checkOrientation);
-
-// Check orientation on orientation change (for mobile devices)
-window.addEventListener('orientationchange', checkOrientation);
+// Document ready function
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize AOS
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  }
+  
+  // Initialize GLightbox if available
+  if (typeof GLightbox !== 'undefined') {
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  }
+  
+  // Initialize typing effect if on home page
+  if (document.getElementById('text') && document.getElementById('cursor')) {
+    initTypingEffect();
+  }
+  
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const closeMenu = document.getElementById('closeMenu');
+  const mobileNav = document.getElementById('mobileNav');
+  
+  if (mobileMenuToggle && mobileNav) {
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileNav.classList.remove('translate-x-full');
+    });
+  }
+  
+  if (closeMenu && mobileNav) {
+    closeMenu.addEventListener('click', function() {
+      mobileNav.classList.add('translate-x-full');
+    });
+  }
+  
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (header) {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2');
+        header.classList.add('shadow-lg');
+      } else {
+        header.classList.remove('py-2');
+        header.classList.remove('shadow-lg');
+      }
+    }
+    
+    // Call reveal animations
+    revealOnScroll();
+  });
+});

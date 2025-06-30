@@ -1,0 +1,753 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Page setup -->
+    <meta charset="utf-8">
+    <title>Ömer Alper Güzel</title>
+    <meta name="description" content="Ömer Alper Güzel internet sayfası">
+    <meta name="author" content="Ömer Alper Güzel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel="icon" type="image/png" href="favicon.png">
+  
+    <!-- Stylesheets -->
+    <!-- Reset default styles and add support for google fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+   
+    <!-- Custom styles -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
+
+    <!-- Want to add Bootstrap? -->
+    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+    
+    <style>
+      #orientationPrompt {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: white;
+          font-size: 1.5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          z-index: 9999;
+          padding: 20px;
+      }
+    </style>
+
+  </head>
+  
+  <body>
+
+    <header id="header">
+      <img style="display: block; margin: auto;" src="logo2.png"
+      width="65">
+      <h1 style="font-family:'Times New Roman', Times, serif; text-align: center">&nbsp</h1>
+      <!--<h3 style="text-align: center">Ömer Alper Güzel</h3>-->
+      
+      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
+      <ul class="main-menu">
+        <li><a href="#home">Ana Sayfa</a></li>
+        <li><a href="#about">Hakkımda</a></li>
+        <li><a href="#codeproject">Yazılım Projeleri</a></li>
+        <li><a href="#design">Tasarımlar</a></li>
+        <li><a href="#drawing">Çizimler</a></li>
+        <li><a href="#certificates">Sertifikalar</a></li>
+      </ul>                 
+    </header>
+
+    <div id="container">
+      <div class="inner">
+        <div id="content"> 
+          <!-- Home Page -->
+          <div id="home" class="content-region hide">
+            <div id="containerhomeanimation">
+              <h1 style="font-family: Source Code Pro">Adım Ömer Alper</h1>
+              <div id="text"></div><div id="cursor"></div>
+          </div>
+            <!--<h1anim style="font-family: Source Code Pro" id="text"></h1anim>-->
+
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooo
+            </p>
+
+            <div class="center">
+              <div class="galleryhome">
+                <div class="desc3"></div>
+                  <a target="_blank" href="#codeproject">
+                    <img src="homepage/icons8-code-100.png" alt="Code" width="600" height="400">
+                    <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400" class="hover">-->
+                  </a>
+                  <div class="desc3">
+                    <h3a>Kodlama</h3a>
+                    <p></p>
+                    <p>Kodlarken Java kullanıyorum. Diğer yandan C# ve Python öğreniyorum. Oyun geliştirme ve yapay zekaya ilgim var.</p>
+                  </div>
+                </div>
+  
+                <div class="galleryhome">
+                  <div class="desc3"></div>
+                    <a target="_blank" href="#design">
+                      <img src="homepage/icons8-design-100.png" alt="Design" width="600" height="400">
+                      <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400">-->
+                    </a>
+                    <div class="desc3">
+                      <h3a>Tasarım</h3a>
+                      <p></p>
+                      <p>Figma, Photoshop, Illustrator kullanıyorum. Arayüz tasarımı, afiş tasarımı ve başka pek çok şeyle ilgileniyorum.</p>
+                    </div>
+                  </div>
+  
+                  <div class="galleryhome">
+                    <div class="desc3"></div>
+                      <a target="_blank" href="#drawing">
+                        <img src="homepage/icons8-illustrator-100.png" alt="Draw" width="600" height="400">
+                        <!--<img src="homepage/icons8-illustrator.gif" alt="Draw" width="600" height="400">-->
+                      </a>
+                      <div class="desc3">
+                        <h3a>Çizim</h3a>
+                        <p></p>
+                        <p>Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.</p>
+                      </div>
+                    </div>
+            </div>
+
+                  <p class="hidden" style="visibility: hidden;">
+                    oooooooooooooooooooooooooooooooo
+                  </p>
+
+          </div>
+          
+          <!-- About Me Page -->
+          <div id="about" class="content-region hide">
+            <h2>Hakkımda</h2>
+            <p>
+              Ben temel olarak kodlamayla, tasarım yapmakla ve çizmekle uğraşan bir öğrenciyim. Yaptığım işlerde yazılımda Unity, VS Code, GIT kullanıyorum. Tasarımda ve çizimde Figma, Photoshop, Illustrator, Clip Studio Paint kullanıyorum. Programlamada genelde Java kullanmakla beraber Python ve C# öğreniyorum. 
+            </p>
+            <p>
+              TED Üniversitesi Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Okulda öğrendiğim ve kullandığım Java ile birlikte kendim Python'la da bir miktar uğraştım. Aynı zamanda oyun geliştirmek için Unity kullanıyorum. Bunu yaparken tasarım ve çizimde yapabildiklerimden de yararlanmaya çalışıyorum. Aynı zamanda yapay zeka üzerine de çalışmak istiyorum.
+            </p>
+            <p>
+              Hem İstanbul Üniversitesi'nde açık öğretim üzerinden Grafik Tasarım bölümünü okuyorum hem de 2015'ten beridir Photoshop'la ve bir süredir Illustrator ve Figma ile uğraşıyorum. Bu kapsamda hem afiş, poster, sosyal medya paylaşımı tasarımı yapıyorum hem de web sitesi, arayüz tasarımı üzerinde de çalışıyorum.
+            </p>
+            <p>
+              Uzun süredir çizimle ilgileniyorum ancak dijital çizime 2020 sonunda başladım. Clip Studio Paint'i bu konuda yeterince iyi düzeyde kullanabiliyorum. Bu sayede line-art çizebiliyorum. Aynı zamanda Procreate'i de öğrenmeye çalışıyorum. Vektörel çizim öğrenmek istiyorum. 
+            </p>
+            <p>
+              Saydığım şeylerin yanında tarihle uğraşmayı seviyorum.  
+            </p>
+          </div>
+
+          <!-- Coding Projects Page -->
+          <div id="codeproject" class="content-region hide">
+            <h2>Yazılım Projeleri</h2>
+            <p>
+              Burada daha önce yaptığım veya hâlâ yapıyor olduğum projeler bulunuyor. Buraya arayüz tasarımını yapıp kodunu yazmadığım projeler dahil etmedim.
+            </p>
+            <div class="galleryalt1">
+              <a target="_blank" href="https://github.com/omeralperguzel/RadioApp">
+                <img src="codeproject/RadioAppSQ1.png" alt="Rush Racer" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>Radiosphere (Internet Radio App)</h3>
+                <h5>Temmuz 2024</h5>
+                <p>Mita'daki yaz stajım kapsamında React Native ile geliştirdiğim internet radyosu mobil uygulaması.</p>
+              </div>
+            </div>
+            <div class="galleryalt1">
+              <a target="_blank" href="https://github.com/duyguyesiloglu/RushRacer">
+                <img src="codeproject/RushRacerSQ1.png" alt="Rush Racer" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>Rush Racer</h3>
+                <h5>Aralık 2023</h5>
+                <p>TED Üniversitesi SENG 463 dersi projesi olarak yapılmış, Unity üzerinden 2 pist ve farklı araçlarla yapılmış araba yarışı oyunu.</p>
+              </div>
+            </div>
+            <div class="galleryalt1">
+              <a target="_blank" href="https://alphe7.itch.io/posta-son-karar">
+                <img src="codeproject/PostaSonKararSQ1.png" alt="Posta: Son Karar" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>Posta: Son Karar</h3>
+                <h5>Ekim 2023</h5>
+                <p>%100 Game Jam için yapılmış, hem karar alınıp hem postacının kontrol edilebildiği, yarışma sonucunda ilk 10'a girmiş oyun.</p>
+              </div>
+            </div>
+            <div class="galleryalt1">
+              <a target="_blank" href="https://github.com/omeralperguzel">
+                <img src="codeproject/LibraryManagementPlaceholderSQ1.png" alt="Library Management System" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>MySQL Library Management System</h3>
+                <h5>Mayıs 2023</h5>
+                <p>TED Üniversitesi CMPE 232 dersi projesi olarak yapılmış, MySQL ve Java Spring üzerinden yazılmış kütüphane yönetimi yazılımı.</p>
+              </div>
+            </div>
+            <div class="galleryalt1">
+              <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+                <img src="codeproject/ReapingOfTheSowAd5.png" alt="Reaping of the Sow" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>Reaping of the Sow</h3>
+                <h5>Ekim 2022</h5>
+                <p>Greeny Game Jam 2022 için yapılmış, oyuncunun yaptıklarının sonuçlarını görebileceği 3 bölümlük bir oyun projesi.</p>
+              </div>
+            </div>
+
+            <div class="galleryalt1">
+              <a target="_blank" href="https://github.com/omeralperguzel/MarioGamePrototype">
+                <img src="codeproject/SuperMarioJavaSQ1.png" alt="Super Mario Bros Java" width="300" height="200">
+              </a>
+              <div class="desc2">
+                <h3>Super Mario Bros. on Java</h3>
+                <h5>Mayıs 2022</h5>
+                <p>TED Üniversitesi CMPE 114 dersi projesi olarak yapılmış, oyun içi arayüz, düşman, bölüm geçişlerinin denendiği bir oyun projesi. </p>
+              </div>
+            </div>
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooooooooooooooo
+            </p>
+
+          </div>
+
+          <!-- Designs Page -->
+          <div id="design" class="content-region hide">
+            <h2>Tasarımlar</h2>
+            
+            <h3>Figma</h3>
+            <h3a>Sağlık ve Fitness Uygulaması Tasarımı</h3a>
+            <p></p>
+            <p>SENG 214 proje sunumu kapsamında tasarladığım sağlık uygulaması konsepti</p>
+
+          <div class="gallery">
+            <a target="_blank" href="designs/GymAndFitnessAppPhone1.png">
+              <img src="designs/GymAndFitnessAppPhone1.png" alt="Phone 1" width="300" height="200">
+            </a>
+            <div class="desc">Telefon profil ekranı.</div>
+          </div>
+          
+          <div class="gallery">
+            <a target="_blank" href="designs/GymAndFitnessAppPhone1.png">
+              <img src="designs/GymAndFitnessAppPC2.png" alt="PC 1" width="300" height="200">
+            </a>
+            <div class="desc">Bilgisayar sürümü tasarımı.</div>
+          </div>
+          
+          <div class="gallery">
+            <a target="_blank" href="designs/GymAndFitnessAppPhone1.png">
+              <img src="designs/GymAndFitnessAppPhone2.png" display: block; margin: auto; alt="Phone 2" width="300" height="200">
+            </a>
+            <div class="desc">Telefon egzersiz ekranı.</div>
+          </div>
+
+          <p class="hidden" style="visibility: hidden;">
+            oooooooooooooooooooooooooooooooooo
+          </p>
+
+          <h3>Photoshop</h3>
+            <h3a>Instagram Postları</h3a>
+            <p></p>
+            <p>Öğrenci toplulukları için yaptığım Instagram paylaşımı tasarımları</p>
+
+            <div class="gallery">
+              <a target="_blank" href="designs/ALECTED29Ekim1.png">
+                <img src="designs/ALECTED29Ekim1.png" alt="ALECTED 29.10" width="300" height="200">
+              </a>
+              <div class="desc">29 Ekim 2022 paylaşımı</div>
+            </div>
+            
+            <div class="gallery">
+              <a target="_blank" href="designs/ALECTEDWorkshop1.png">
+                <img src="designs/ALECTEDWorkshop1.png" alt="ALECTED Workshop 1" width="300" height="200">
+              </a>
+              <div class="desc">Photoshop workshopu</div>
+            </div>
+
+            <div class="gallery">
+              <a target="_blank" href="designs/ALECTEDGeneralAssembly1.png">
+                <img src="designs/ALECTEDGeneralAssembly1.png" alt="ALECTED General Assembly 2022" width="300" height="200">
+              </a>
+              <div class="desc">2022 Genel Kurul Toplantısı</div>
+            </div>            
+
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooooo
+            </p>
+
+            <h3a>YouTube Thumbnail</h3a>
+            <p></p>
+            <p>Eskiden YouTube kanalım için yaptığım bazı tasarımlar</p>
+          
+            <div class="gallery">
+              <a target="_blank" href="designs/TVArchiveFox1.png">
+                <img src="designs/TVArchiveFox1.png" alt="TV Archive: FOX TV" width="300" height="200">
+              </a>
+              <div class="desc">FOX TV Reklamlar</div>
+            </div>
+
+            <div class="gallery">
+              <a target="_blank" href="designs/SmashMeleeKirby1.png">
+                <img src="designs/SmashMeleeKirby1.png" alt="Smash Melee Gameplay 2 Kirby" width="300" height="200">
+              </a>
+              <div class="desc">Smash Bros Melee Gameplay</div>
+            </div>            
+            
+            <div class="gallery">
+              <a target="_blank" href="designs/SonicMusicThumbnail1.png">
+                <img src="designs/SonicMusicThumbnail1.png" alt="Sonic Music Thumbnail" width="300" height="200">
+              </a>
+              <div class="desc">Sonic oyun müziği</div>
+            </div>
+
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooooo
+            </p>
+
+          <h3>Illustrator</h3>
+            <h3a>Ankara Metrosu Tasarım Projesi</h3a>
+            <p></p>
+            <p>Ankara metrosunun 25 yıllık tabela tasarımlarını yenilemek için yaptığım tasarım denemeleri.</p>
+
+            <div class="gallery">
+              <a target="_blank" href="designs/KizilayM4Horizontal1.png">
+                <img src="designs/KizilayM4Horizontal1.png" alt="Smash Melee Gameplay 2 Kirby" width="300" height="200">
+              </a>
+              <div class="desc">Kızılay M4 yatay tabela</div>
+            </div>            
+
+            <div class="gallery">
+              <a target="_blank" href="designs/KizilaySubwayExterior1.png">
+                <img src="designs/KizilaySubwayExterior1.png" alt="Sonic Music Thumbnail" width="300" height="200">
+              </a>
+              <div class="desc">Kızılay giriş katı tabela</div>
+            </div>
+
+            <div class="gallery">
+              <a target="_blank" href="designs/KizilayAnkarayHorizontal1.png">
+                <img src="designs/KizilayAnkarayHorizontal1.png" alt="TV Archive: FOX TV" width="300" height="200">
+              </a>
+              <div class="desc">Kızılay A1 yatay tabela</div>
+            </div>
+            
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooooo
+            </p>
+
+          </div>
+
+          
+          <!-- Drawings Page -->
+          <div id="drawing" class="content-region hide">
+            <h2>Çizimler</h2>
+            
+            <h3>Arkaplan ve Figürlü Çizimlerim</h3>
+
+            <div class="gallery">
+            <a target="_blank" href="drawings/FascistBird(1.91).png">
+              <img src="drawings/FascistBird(1.91).png" alt="Fascist Bird" width="300" height="200">
+            </a>
+            <div class="desc">Twitter temalı yaptığım çizim.</div>
+          </div>
+          
+          <div class="gallery">
+            <a target="_blank" href="drawings/SummerThemedDrawing(0.72).png">
+              <img src="drawings/SummerThemedDrawing(0.72).png" alt="Summer Themed Drawing" width="300" height="200">
+            </a>
+            <div class="desc">2021 yazında yaptığım yaz temalı çizim.</div>
+          </div>
+          
+          <div class="gallery">
+            <a target="_blank" href="drawings/SultanAndMecha(0.08)-2.png">
+              <img src="drawings/SultanAndMecha(0.08)-2.png" display: block; margin: auto; alt="Sultan and Mecha" width="300" height="200">
+            </a>
+            <div class="desc">Abdülhamid'in bir mechanın karşısında dikildiği çizimim.</div>
+          </div>
+
+          <p class="hidden" style="visibility: hidden;">
+            ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+          </p>
+          <p>
+            Bu resimlerde arkaplana da figürler kadar önem vermeye çalıştım. Tutarsızlıkları olabilir ama en azından bir derinlik yaratmayı denediğim denemeler oldular.
+          </p>
+          <p class="hidden" style="visibility: hidden;">
+            ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+          </p>
+          <h3>Sadece Figür Çizimlerim</h3>
+
+          <div class="gallerysmall">
+            <a target="_blank" href="drawings/SaberAndChristmas(1.41.1).png">
+              <img src="drawings/SaberAndChristmas(1.41.1).png" alt="Saber and Christmas" width="200" height="200">
+            </a>
+            <div class="desc">Yılbaşı ve Saber temasıyla çizdiğim Saber. Pozu için referans kullansam da boyamasında referanstan farklı olmaya çalıştım.</div>
+          </div>
+
+          <div class="gallerysmall">
+            <a target="_blank" href="drawings/SDemirel(1.01).png">
+              <img src="drawings/SDemirel(1.01).png" alt="Demirel Drawing" width="200" height="200">
+            </a>
+            <div class="desc">Yarım bıraktığım Süleyman Demirel çizimi. Burada gördüğüm eski bir pozunu yeniden oluşturmaya çalışmıştım.</div>
+          </div>
+
+          <div class="gallerysmall">
+            <a target="_blank" href="drawings/IllyaDrawing(0.07).jpg">
+              <img src="drawings/IllyaDrawing(0.07)C.jpg" alt="Illya Drawing" width="200" height="200">
+            </a>
+            <div class="desc">İllya çizimim. Bunda poz için Clip Studio Paint'ten 3D model kullandım.</div>
+          </div>
+
+          <div class="gallerysmall">
+            <a target="_blank" href="drawings/MyselfButChibi(0.01).png">
+              <img src="drawings/MyselfButChibi(0.01).png" alt="Myself but Chibi 1" width="200" height="200">
+            </a>
+            <div class="desc">Bir video için yaptığım kendimi çizme denemesi. Aynı kol pozunu kullanırım diye daha çok yüz ifadelerine odaklandım.</div>
+          </div>
+
+          <p class="hidden" style="visibility: hidden;">
+            ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+          </p>
+          <p>
+            Bu çizimlerde figürlere vakit harcamaktan arkaplan yapmaya uğraşmadım bile. Ama özellikle animanga karakterlerinin saçları ve gözlerinde düzgün bir tonlama yapıp daha derin göstermeye çalıştım.
+          </p>
+          
+          </div>
+
+          <!-- Certificates Page -->
+          <div id="certificates" class="content-region hide">
+            <h2>Sertifikalar</h2>
+            <p>
+              Burada kronolojik bir sıralama göstermektense sertifikaları ve eğitimleri kendimce sıralamayı ve gruplamayı tercih ettim. Burada gruplamalar eğitimin verildiği yerlere  göre yapıldı ama dallara göre daha temiz bir görüntüleme üzerinde de çalışacağım. 
+            </p>
+
+            <p class="hidden" style="visibility: hidden;">
+              oooooooooooooooooooooooooooooooooooooooooooo
+            </p>
+
+            <h3>TEDÜ Patika.dev Üniversite Programı</h3>
+            <p>Bu programa okulumu dahil edebilmek için kariyer merkezine bizzat e-posta gönderdim. Vaktinde göndermem vesilesiyle üniversitemiz bu programa dahil olan ilk 5 üniversite arasına girdi. Bu eğitimler kapsamında yaz tatili boyunca hem eğitimlere girdim, hem de kodlama sınavlarına girme şansını yakaladım.</p>
+
+            <div class="galleryalt2">
+              <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+                <img src="certificates\patikadevlogo1.png" alt="Reaping of the Sow" width="300" height="200">
+              </a>
+              <div class="desc2alt1">
+                <h3>Patika.dev Staj Programı: Java</h3>
+                <h5>Ağustos 2022 - Günümüz</h5>
+                <p>Bu program kapsamında Java bilgilerimi tekrar ettim, GIT hakkında daha çok şey öğrendim ve haftalık Coderbyte testlerine girdim. Patika.dev'deki bazı kurslar yetişmediği için programı bitiremedim.</p>
+              </div>
+            </div>
+            
+            <div class="galleryalt2">
+              <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+                <img src="certificates\patikadevlogo1.png" alt="Reaping of the Sow" width="300" height="200">
+              </a>
+              <div class="desc2alt1">
+                <h3>TEDÜ Yazılıma Başlangıç Patikası</h3>
+                <h5>Haziran 2022</h5>
+                <p>Bu program kapsamında Veri Yapıları ve Algoritma'ya bir giriş yaptım ve Visual Studio Code hakkında ek şeyler öğrendim.</p>
+            </div>
+          </div>
+          
+          <p class="hidden" style="visibility: hidden;">
+            oooooooooooooooooooooooooooooooooooooooooooo
+          </p>
+    
+          <h3>Coursera Calarts Sertifikalarım</h3>
+            <p>2023 ara tatilinde Coursera ve üniversitemizin anlaşması kapsamında aldığım Coursera kurslarıdır. Bazı ödevlerini yetiştiremediğim için ödev sonrası sertifikalar üniversite sponsorluğunun dışında olacak. Bu kurslarda hedefim okuduğum Grafik Tasarım ön lisans programına ilaveten Coursera'dan da alabildiğim grafik tasarım kurslarını alarak bu alanda eksiklerimi giderebilmek olacak.</p>
+
+
+          <div class="galleryalt2">
+            <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+              <img src="certificates\calartslogo1.png" alt="Reaping of the Sow" width="300" height="200">
+            </a>
+            <div class="desc2alt1">
+              <h3>Introduction to Game Design</h3>
+              <h5>Ocak - Şubat 2023</h5>
+              <p>4 haftalık bu kursta oyunların temel elementleri, karakter kurgusu, oyun dengesi ve hikaye hakkında bilgi edindim.</p>
+          </div>
+        </div>
+      
+
+        <div class="galleryalt2">
+          <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+            <img src="certificates\calartslogo1.png" alt="Reaping of the Sow" width="300" height="200">
+          </a>
+          <div class="desc2alt1">
+            <h3>Fundamentals of Graphic Design</h3>
+            <h5>Ocak - Şubat 2023</h5>
+            <p>4 haftalık bu kursta tipografi, temel tasarım, kompozisyon teknikleri hakkında ek bilgi edindim.</p>
+        </div>
+       </div>
+          
+          <p class="hidden" style="visibility: hidden;">
+            oooooooooooooooooooooooooooooooooooooooooooo
+          </p>
+    
+          <h3>Python Sertifikalarım</h3>
+            <p>Yapay zeka üzerine de yoğunlaşmak istediğim için Python öğrenme konusunda alacak daha yolum olsa da bu yolda aşağıdaki sertifikaları aldım.</p>
+
+          
+
+          <div class="galleryalt2">
+            <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+              <img src="certificates\kagglelogo1.png" alt="Reaping of the Sow" width="300" height="200">
+            </a>
+            <div class="desc2alt1">
+              <h3>Certificate of Completion: Python</h3>
+              <h5>Haziran 2022</h5>
+              <p>Kaggle'ın yaklaşık 10 ders süren, içinde uygulama projelerini de bir miktar barındıran bir Python giriş dersi.</p>
+          </div>
+        </div>
+
+        <div class="galleryalt2">
+          <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+            <img src="certificates\datacamplogo1.png" alt="Reaping of the Sow" width="300" height="200">
+          </a>
+          <div class="desc2alt1">
+            <h3>St. of Acc. : Introduction to Python</h3>
+            <h5>Mart 2022</h5>
+            <p>DataCamp'in Python hakkında temel şeyleri gösterdiği ve birkaç kütüphane hakkında aşırı temel bilgileri içeren program.</p>
+        </div>
+       </div>
+
+       <p class="hidden" style="visibility: hidden;">
+        oooooooooooooooooooooooooooooooooooooooooooo
+       </p>
+
+       <h3>Akbank Gençlik Akademisi: Siber Güvenlik Analisti (2021-2022)</h3>
+        <p>Bu programa Siber Güvenlik 101 adlı 2 günlük programın ardından başvurup kabul edilen 2000 kişinin arasında oldum. Bu 6 aylık programın ilk 3 ayında aktif olarak katılırken diğer 3 ayına katılamadım.</p>
+
+
+       <div class="galleryalt2">
+        <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+          <img src="certificates\ciscologo1.png" alt="Reaping of the Sow" width="300" height="200">
+        </a>
+        <div class="desc2alt1">
+          <h3>Introduction to Networks</h3>
+          <h5>Kasım 2021</h5>
+          <p>Ağ yapılarının uygulamalı olarak öğrenildiği. Bu konu hakkında temel bilgilerin verildiği bir kurs.</p>
+       </div>
+     </div>
+    
+    <div class="galleryalt2">
+      <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+        <img src="certificates\ciscologo1.png" alt="Reaping of the Sow" width="300" height="200">
+      </a>
+      <div class="desc2alt1">
+        <h3>NDG Linux Unhatched</h3>
+        <h5>Kasım 2021</h5>
+        <p>Linux'ta temel terminal komutlarının uygulamalı biçimde öğrenildiği bir kurs.</p>
+     </div>
+   </div>
+
+
+    <div class="galleryalt2">
+    <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+      <img src="certificates\ciscologo1.png" alt="Reaping of the Sow" width="300" height="200">
+    </a>
+    <div class="desc2alt1">
+      <h3>Introduction to Cybersecurity</h3>
+      <h5>Ekim 2021</h5>
+      <p>Siber güvenliğin temellerini anlatan, bu konuda başlıkları ve alınabilecek önlemleri anlatan bir giriş kursu.</p>
+   </div>
+ </div>
+
+<p class="hidden" style="visibility: hidden;">
+  oooooooooooooooooooooooooooooooooooooooooooo
+</p>
+
+<h3>Graphixly Clip Studio Paint Sertifikaları</h3>
+  <p>Graphixly'nin 2 saat süren Clip Studio Paint sertifikaları. Dijital çizimde araç kullanımında daha iyi hâle gelebilmek için aldığım bazı eğitimleri içeriyor.</p>
+
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\graphixlylogo1.jpg" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Using 3D Models in Clip Studio Paint</h3>
+    <h5>Kasım 2021</h5>
+    <p>Clip Studio Paint'te 3 boyutlu modelleri referans olarak kullanabilmek üzerine bir eğitim.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\graphixlylogo1.jpg" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Drawing with Perspective & Camera Angles</h3>
+    <h5>Kasım 2021</h5>
+    <p>Çizimdeki açılar ve bu açıları Clip Studio Paint'te uygulamak üzerine bir eğitim.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\graphixlylogo1.jpg" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>New to Clip Studio Paint? Learn How To</h3>
+    <h5>Kasım 2021</h5>
+    <p>Clip Studio Paint'teki temel araçları ve fonksiyonları özetleyen kısa bir eğitim.</p>
+</div>
+</div>
+
+<p class="hidden" style="visibility: hidden;">
+  oooooooooooooooooooooooooooooooooooooooooooo
+</p>
+
+<h3>Akbank Gençlik Akademisi: 101 Serisi</h3>
+  <p>Akbank Gençlik Akademisi'nin genelde 2 gün süren programları. Bu kapsamda ilgimi çeken eğitimlere girmeye çalıştım. Ayrıca Siber Güvenlik 101 kursu yoluyla Siber Güvenlik Analisti eğitiminden de yararlanma imkanı buldum.</p>
+
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\akbanklogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Siber Güvenlik 101</h3>
+    <h5>Kasım 2021</h5>
+    <p>Akbank Gençlik Akademisinin alanından farklı uzmanları getirdiği, 2 gün süren Siber Güvenlik kursu.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\akbanklogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Makine Öğrenmesi Operasyonları 101</h3>
+    <h5>Kasım 2021</h5>
+    <p>Akbank Gençlik Akademisinin alanından farklı uzmanları getirdiği, 2 gün süren Makine Öğrenmesi kursu.</p>
+</div>
+</div>
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\akbanklogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>İnnovasyon ve Girişimcilik 101</h3>
+    <h5>Kasım 2021</h5>
+    <p>Akbank Gençlik Akademisinin alanından farklı uzmanları getirdiği, 2 gün süren İnnovasyon ve Girişimcilik kursu.</p>
+</div>
+</div>
+
+<p class="hidden" style="visibility: hidden;">
+  oooooooooooooooooooooooooooooooooooooooooooo
+</p>
+
+<h3>Diğer Sertifikalar</h3>
+  <p>Bunları ayrıca bir gruba sokmak istemedim. Üstelik bu sertifikalar burada genellikle aldığım sertifikaların tek bir yerde durmasını istediğimden dolayı burada duruyorlar.</p>
+
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\googledsclogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Android Study Jam: New to Prog.</h3>
+    <h5>Kasım 2021</h5>
+    <p>Android Studio ve Kotlin'deki temel şeyler üzerine 3 saatlik bir eğitim programı.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="https://media.licdn.com/dms/image/C4E0BAQEJ-KqJ2cHWYg/company-logo_200_200/0/1613066036213?e=1685577600&v=beta&t=bDp_3xPZyRlL4icIBbwfk8adsEMQm7DPVWvMyJQkWRM" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Yapay Zekaya İlk Adım</h3>
+    <h5>Kasım 2021</h5>
+    <p>Global AI Hub'ın yapay zekanın temel kavramları hakkında 5 saatlik eğitim programı.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\cfecertlogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>Bilişim ve Teknoloji Hukuku Eğitimi</h3>
+    <h5>Eylül 2021</h5>
+    <p>Mete Tevetoğlu'nun Türkiye'deki bilişim hukuku hakkında yasaları anlattığı 2 saatlik eğitim.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="certificates\gaiblogo1.png" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>ISO 55001 Varlık Yönetim Sist. Webinarı</h3>
+    <h5>Kasım 2021</h5>
+    <p>CFECert'in ISO 55001 varlık yönetim sistemi hakkında 2 saat süren eğitim programı.</p>
+</div>
+</div>
+
+<div class="galleryalt2">
+  <a target="_blank" href="https://alphe7.itch.io/reaping-of-the-sow">
+    <img src="https://media.licdn.com/dms/image/C4D0BAQHjXKSaVHObvA/company-logo_200_200/0/1519951073603?e=1685577600&v=beta&t=97rBqkXBCk9hhfAHexwPMrXNqayr9BfTLIAxZmMfSC0" alt="Reaping of the Sow" width="300" height="200">
+  </a>
+  <div class="desc2alt1">
+    <h3>İHA Amatör Pilotluk Lisansı</h3>
+    <h5>Ocak 2021</h5>
+    <p>İnsansız hava aracını amatör düzeyde uçurmak için alınmış lisans belgesi.</p>
+</div>
+</div>
+
+<p class="hidden" style="visibility: hidden;">
+  oooooooooooooooooooooooooooooooooooooooooooo
+</p>
+
+    </div>
+            
+        </div>
+      </div>
+    </div>
+
+    <div id="orientationPrompt">
+      <p>
+        Lütfen en iyi deneyim için cihazınızı yatay konuma getirin.
+      </p>
+      <p class="hidden" style="visibility: hidden;">
+        0
+      </p>
+      <p>
+        Please rotate your device to landscape mode for the best experience.
+      </p>
+    </div>
+
+    <footer>  
+      <div class="flex-container">
+        <div><a href="https://github.com/omeralperguzel"><img src="contacts/icons8-github-480.png" height="45"></a></div>
+        <div><a href="https://www.linkedin.com/in/omeralperguzel"><img src="contacts/icons8-linkedin-480.png" height="50"></a></div>
+        <div><a href="https://www.behance.net/omeralperguzel"><img src="contacts/icons8-behance-480.png" height="45"></a></div>  
+        <div><a href="https://alphe7.itch.io/"><img src="contacts/icons8-itch-io-480.png" height="45"></a></div>
+        <div><a href="mailto:omeralperguzel@hotmail.com"><img src="contacts/icons8-gmail-logo-480.png" height="45"></a></div>
+        <div><a href="https://www.upwork.com/freelancers/~0192e920f2b083083d"><img src="contacts/upwork.png" height="45"></a></div>  
+      </div>
+    
+      <h4>Ömer Alper Güzel
+        <br>2023 - 2025
+      </h4>
+    </footer>
+    
+    <!-- Load additional JS scripts here -->
+    <script type="text/javascript" src="script.js">
+      
+    </script>
+  
+    
+  </body>
+</html>

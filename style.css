@@ -5,15 +5,35 @@
 /* html is set to 62.5% so that all the REM measurements are based on 10px sizing. So basically 1.5rem = 15px */
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
+
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 2.0;
   font-weight: 400;
-  border-radius: 25px;
-  font-family: "Montserrat", 'Source Code Pro', monospace;;
-  /*font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: "Montserrat", sans-serif;
   color: #FFFFFF;
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #073B4C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #06D6A0;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #05a37c;
 }
 
 /**
@@ -22,8 +42,10 @@ body {
 a {
   font-weight: normal;
   text-decoration: none; 
-  color:#e0cfcf;
+  color: #e0cfcf;
+  transition: color 0.3s ease;
 }
+
 a:focus {
   outline: thin dotted;
 }
@@ -35,27 +57,17 @@ small {
 /**
  * Headings
  */
-h1,
-h1cent,
-h1anim,
-h2,
-h3,
-h3a,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   text-rendering: optimizeLegibility; /*  voodoo to enable ligatures and kerning | https://developer.mozilla.org/en-US/docs/CSS/text-rendering */
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
 }
+
 h1 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h1cent {text-align: center; font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h1anim {text-align: center; font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; border-right: 0.15em solid orange; animation: blink 0.75s step-end infinite; width: max-content;}
 h2 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
 h3 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
-h3a { font-size: 2.1rem; line-height: 1.42; letter-spacing: -.08rem; }
 h4 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
 h5 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 h6 { font-size: 1.4rem; line-height: 1.6;  letter-spacing: 0; }
@@ -66,7 +78,6 @@ h6 { font-size: 1.4rem; line-height: 1.6;  letter-spacing: 0; }
 p {
   margin: 0 auto 1.5em auto; /* bottom margin for paragraphs */
 }
-/*p + p {}*/
 
 /**
  * Quotes & Blockquotes
@@ -74,293 +85,30 @@ p {
 q {
   quotes: '\00201C' '\00201D';
 }
+
 q:before {
   content: open-quote;
 }
+
 q:after {
   content: close-quote;
 }
 
 blockquote {
-  /*background-color: #F8F8F8;*/
-  border-left: 2px solid #AFC0D2;
+  border-left: 2px solid #06D6A0;
   margin: 1.6em 10%;
   padding: .75em 1em;
-  font-size:1.8rem;
+  font-size: 1.8rem;
+  background-color: rgba(6, 214, 160, 0.1);
+  border-radius: 0 8px 8px 0;
 }
+
 blockquote p:last-child {
   margin-bottom: 0;  
 }
 
-/**
- * Layout styles
- */
-
-/* Full size background image */
-html, #container, .inner { background-color:transparent;}
-html {
-  height: 100vh;
-	--u: 10px;
-	--c1: #eabdc5;
-	--c2: rgb(133, 190, 100);
-	--c3: #464f84;
-	--gp: 50%/ calc(var(--u) * 16.9) calc(var(--u) * 12.8);
-	background: 
-		conic-gradient(from 122deg at 50% 85.15%, var(--c2) 0 58deg, var(--c3) 0 116deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 122deg at 50% 72.5%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 58deg at 82.85% 50%, var(--c3) 0 64deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 58deg at 66.87% 50%, var(--c1) 0 64deg, var(--c2) 0 130deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 238deg at 17.15% 50%, var(--c2) 0 64deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from 172deg at 33.13% 50%, var(--c3) 0 66deg, var(--c1) 0 130deg, #fff0 0 100%) var(--gp),
-		linear-gradient(98deg, var(--c3) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
-		linear-gradient(-98deg, var(--c2) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
-		conic-gradient(from -58deg at 50.25% 14.85%, var(--c3) 0 58deg, var(--c2) 0 116deg, #fff0 0 100%) var(--gp),
-		conic-gradient(from -58deg at 50% 28.125%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
-		linear-gradient(90deg, var(--c2) 0 50%, var(--c3) 0 100%) var(--gp);
-  /*background:url(background.jpg) center center no-repeat fixed;
-  background-size:cover;*/
-}
-body {
-  max-width:800px;
-  margin:25px auto;
-}
-header{ 
-  background: rgba(0,0,0,.8); 
-  padding:50px 25px 25px 25px;
-  color:#FFFFFF; 
-  border-radius: 25px 25px 0 0;
-}
-
-#content{ 
-  background: rgba(0,0,0,.8); 
-  padding:25px;
-  color:#FFFFFF; 
-}
-
-footer { 
-  background: rgba(0,0,0,.8); 
-  margin-left: auto;
-  margin-right: auto;
-  padding:25px;
-  color:#FFFFFF; 
-  border-radius: 0 0 25px 25px;
-  text-align: center;
-
-}
-
-/* Menu Links */
-ul.main-menu {
-  width: 100%;
-  display: table;
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  justify-content: left;
-  list-style: none;
-}
-
-ul.main-menu li{
-  display: inline-block;
-}
-
-ul.main-menu li a {
-  display: block;
-  margin-right:20px;
-  font-size:2.0rem;
-  border-bottom: solid transparent 3px;
-  color:#aab1c4;
-}
-ul.main-menu li a:hover {
-  color:#FFFFFF;
-}
-ul.main-menu li a.active {
-  color:#FFFFFF;
-  /*border-bottom-color:#d11a13;*/
-}
-
-/* Utility classes */
-.hide {
-  display:none;
-}
-.show {
-  display:block;
-}
-
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-  border-radius: 0 0 15px 15px;
-}
-
-div.gallerysmall {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 160px;
-  border-radius: 0 0 15px 15px;
-}
-
-div.galleryhome {
-  margin: 1%;
-  border: 1px solid #ccc;
-  float: inline-start;
-  width: 100%;
-  /*height: 350px;*/
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px 15px 15px 15px;
-  background-color: #ffffff;
-  color: #000000;
-}
-
-div.galleryalt1 {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: (730)px;
-  height: 200px;
-  display: flex;
-  border-radius: 0 15px 15px 0;
-}
-
-div.galleryalt2 {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: (730)px;
-  display: flex;
-  border-radius: 15px 15px 15px 15px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallerysmall:hover {
-  border: 1px solid #777;
-}
-
-div.galleryalt1:hover {
-  border: 1px solid #777;
-}
-
-div.galleryalt2:hover {
-  border: 1px solid #777;
-}
-
-div.galleryhome:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.gallerysmall img {
-  width: 100%;
-  height: auto;
-}
-
-div.galleryalt1 img {
-  width: auto;
-  height: 100%;
-  flex-wrap: wrap;
-}
-
-div.galleryalt2 img {
-  margin: 20px;
-  width: 130px;
-  height: 130px;
-  flex-wrap: wrap;
-}
-
-div.galleryhome img {
-  padding-left: 20px;
-  width: 50px;
-  height: 50px;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-div.desc2 {
-  padding-left: 30px;
-  padding-top: 20px;
-  text-align: left;
-}
-
-div.desc2alt1 {
-  padding-left: 30px;
-  padding-top: 20px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  text-align: left;
-  flex-wrap: wrap;
-}
-
-div.desc3 {
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-right: 20px;
-  padding-bottom: 15px;
-  text-align: left;
-  flex-wrap: wrap;
-}
-
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #f1f1f100;
-}
-
-.flex-container > div {
-  background-color: #f1f1f100;
-  width: 100px;
-  margin: 10px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-}
-
-.flex-container-2 {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #f1f1f100;
-}
-
-.flex-container-2 > div {
-  background-color: #f1f1f100;
-  width: 100px;
-  margin: 60px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-}
-
-#containerhomeanimation {
-	text-align: center;
-  min-height: 130px;
-}
-
+/* Typing animation */
 #text {
-  font-size: 3.6rem; 
-  line-height: 1.25; 
-  min-height: 1.25;
-  letter-spacing: -.1rem; 
-  font-family: Source Code Pro;
 	display: inline-block;
 	vertical-align: middle;
 	color: rgb(255, 255, 255);
@@ -372,17 +120,168 @@ div.desc3 {
 	vertical-align: middle;
 	width: 3px;
 	height: 50px;
-  min-height: 1.25;
-	background-color: rgb(133, 190, 100);
+	background-color: #06D6A0;
 	animation: blink .75s step-end infinite;
 }
 
 @keyframes blink {
-  from,
-  to {
-    border-color: transparent;
+  from, to {
+    opacity: 0;
   }
   50% {
-    border-color: orange;
+    opacity: 1;
   }
+}
+
+/* Content regions */
+.content-region {
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.content-region.hide {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Card hover effects */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(6, 214, 160, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Header transition styles */
+.header-content {
+  transition: all 0.3s ease;
+}
+
+.logo-container {
+  transition: all 0.3s ease;
+}
+
+/* Header styles */
+.header-title {
+  font-size: 40pt; /* Ensure minimum 20pt size */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links {
+  transition: all 0.3s ease;
+}
+
+/* Logo sizing for consistent 2:3 ratio */
+.header-logo {
+  width: auto;
+  height: auto;
+  aspect-ratio: 2/3;
+}
+
+/* Initial state of nav links */
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: column;
+  }
+  
+  .nav-links {
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+}
+
+/* Scrolled state of header */
+header.py-2 .header-content {
+  flex-direction: row;
+}
+
+header.py-2 .nav-links {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
+/* Footer styles */
+footer h3 {
+  line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+  
+  h1 {
+    font-size: 3.2rem;
+  }
+  
+  h2 {
+    font-size: 2.6rem;
+  }
+  
+  #cursor {
+    height: 35px;
+  }
+  
+  .header-title {
+    font-size: 18pt; /* Slightly smaller on mobile but still large */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Make images in lightbox links have a pointer cursor */
+.glightbox {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.glightbox::after {
+  content: '🔍';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glightbox:hover::after {
+  opacity: 1;
 }
