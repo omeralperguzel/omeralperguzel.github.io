@@ -113,13 +113,15 @@ blockquote p:last-child {
 	vertical-align: middle;
 	color: rgb(255, 255, 255);
 	letter-spacing: 2px;
+	height: 60px;
+	line-height: 60px; /* Match height to ensure vertical centering */
 }
 
 #cursor {
 	display: inline-block;
 	vertical-align: middle;
 	width: 3px;
-	height: 50px;
+	height: 60px;
 	background-color: #06D6A0;
 	animation: blink .75s step-end infinite;
 }
@@ -237,8 +239,13 @@ footer h3 {
     font-size: 2.6rem;
   }
   
+  #text {
+    height: 45px;
+    line-height: 45px; /* Match cursor height on mobile */
+  }
+  
   #cursor {
-    height: 35px;
+    height: 45px;
   }
   
   .header-title {
@@ -283,5 +290,41 @@ footer h3 {
 }
 
 .glightbox:hover::after {
+  opacity: 1;
+}
+
+/* Animated icons on hover */
+.icon-container {
+  position: relative;
+}
+
+/* Custom sizing for 25% smaller icons */
+.w-18 {
+  width: 4.5rem; /* 75% of 6rem (w-24) */
+}
+
+.h-18 {
+  height: 4.5rem; /* 75% of 6rem (h-24) */
+}
+
+.static-icon,
+.animated-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.animated-icon {
+  opacity: 0;
+}
+
+/* Make the column box trigger the hover instead of the icon container */
+.column-box:hover .static-icon {
+  opacity: 0;
+}
+
+.column-box:hover .animated-icon {
   opacity: 1;
 }
