@@ -127,96 +127,314 @@
               Burada daha önce yaptığım veya hâlâ yapıyor olduğum projeler bulunuyor. Buraya arayüz tasarımını yapıp kodunu yazmadığım projeler dahil etmedim.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Project 1 -->
-              <div data-aos="fade-up" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300">
-                <div class="flex flex-col md:flex-row">
-                  <div class="md:w-2/5">
-                    <img src="../codeproject/RadioAppSQ1.png" alt="Radiosphere" class="w-full h-full object-cover">
-                  </div>
-                  <div class="md:w-3/5 p-6">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Radiosphere (Internet Radio App)</h3>
-                    <p class="text-sm text-gray-300 mb-4">Temmuz 2024</p>
-                    <p>Mita'daki yaz stajım kapsamında React Native ile geliştirdiğim internet radyosu mobil uygulaması.</p>
-                    <a href="https://github.com/omeralperguzel/RadioApp" target="_blank" class="inline-block mt-4 text-accent hover:text-white transition-colors duration-300">
-                      <span class="flex items-center">
-                        <span>GitHub'da İncele</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
-                    </a>
-                  </div>
+            <!-- Tag Filter System -->
+            <div class="mb-8">
+              <!-- Grouped and categorized filter buttons -->
+              <div class="flex flex-col items-center gap-4 mb-6">
+                <!-- "All" button stands alone -->
+                <div>
+                  <button class="tag-filter active px-4 py-2 rounded-full bg-dark/70 hover:bg-dark text-white text-base transition-colors duration-300 font-medium" data-tag="all">Tümü</button>
                 </div>
-              </div>
-              
-              <!-- Project 2 -->
-              <div data-aos="fade-up" data-aos-delay="100" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300">
-                <div class="flex flex-col md:flex-row">
-                  <div class="md:w-2/5">
-                    <img src="../codeproject/RushRacerSQ1.png" alt="Rush Racer" class="w-full h-full object-cover">
+                
+                <!-- Filter groups -->
+                <div class="flex flex-wrap justify-center gap-6">
+                  <!-- Project Types Group - Accent Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-accent">Proje Tipi</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-accent/30 hover:bg-accent text-accent hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="game">Oyun</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-accent/30 hover:bg-accent text-accent hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="database">Database</button>
+                    </div>
                   </div>
-                  <div class="md:w-3/5 p-6">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Rush Racer</h3>
-                    <p class="text-sm text-gray-300 mb-4">Aralık 2023</p>
-                    <p>TED Üniversitesi SENG 463 dersi projesi olarak yapılmış, Unity üzerinden 2 pist ve farklı araçlarla yapılmış araba yarışı oyunu.</p>
-                    <a href="https://github.com/duyguyesiloglu/RushRacer" target="_blank" class="inline-block mt-4 text-accent hover:text-white transition-colors duration-300">
-                      <span class="flex items-center">
-                        <span>GitHub'da İncele</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
-                    </a>
+                  
+                  <!-- Platforms Group - Primary Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-primary">Platform</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-primary/30 hover:bg-primary text-primary hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="mobile">Mobil</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-primary/30 hover:bg-primary text-primary hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="web">Web</button>
+                    </div>
                   </div>
-                </div>
-              </div>
-              
-              <!-- Project 3 -->
-              <div data-aos="fade-up" data-aos-delay="200" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300">
-                <div class="flex flex-col md:flex-row">
-                  <div class="md:w-2/5">
-                    <img src="../codeproject/PostaSonKararSQ1.png" alt="Posta: Son Karar" class="w-full h-full object-cover">
-                  </div>
-                  <div class="md:w-3/5 p-6">
-                    <h3 class="text-xl font-bold mb-2 text-accent">Posta: Son Karar</h3>
-                    <p class="text-sm text-gray-300 mb-4">Ekim 2023</p>
-                    <p>%100 Game Jam için yapılmış, hem karar alınıp hem postacının kontrol edilebildiği, yarışma sonucunda ilk 10'a girmiş oyun.</p>
-                    <a href="https://alphe7.itch.io/posta-son-karar" target="_blank" class="inline-block mt-4 text-accent hover:text-white transition-colors duration-300">
-                      <span class="flex items-center">
-                        <span>itch.io'da İncele</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Project 4 -->
-              <div data-aos="fade-up" data-aos-delay="300" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300">
-                <div class="flex flex-col md:flex-row">
-                  <div class="md:w-2/5">
-                    <img src="../codeproject/LibraryManagementPlaceholderSQ1.png" alt="Library Management System" class="w-full h-full object-cover">
-                  </div>
-                  <div class="md:w-3/5 p-6">
-                    <h3 class="text-xl font-bold mb-2 text-accent">MySQL Library Management System</h3>
-                    <p class="text-sm text-gray-300 mb-4">Mayıs 2023</p>
-                    <p>TED Üniversitesi CMPE 232 dersi projesi olarak yapılmış, MySQL ve Java Spring üzerinden yazılmış kütüphane yönetimi yazılımı.</p>
-                    <a href="https://github.com/omeralperguzel" target="_blank" class="inline-block mt-4 text-accent hover:text-white transition-colors duration-300">
-                      <span class="flex items-center">
-                        <span>GitHub'da İncele</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </span>
-                    </a>
+                  
+                  <!-- Programming Languages/Technologies Group - Secondary Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-secondary">Programlama Dili/Teknoloji</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="react">React</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="java">Java</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="unity">Unity</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="godot">Godot</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsContainer">
+              <!-- Project -1 -->
+              <div data-aos="fade-up" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game godot">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/TutsakIsigiArarkenSQ1.png" alt="Tutsak: Işığı Ararken" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Tutsak: Işığı Ararken</h3>
+                    <p class="text-sm text-gray-300 mb-4">Şubat 2025</p>
+                    <p>TEDUJAM 2025 için yapılmış, ışık temalı mikro oyunlar oynayarak ana karakterin tutsaklıktan kurtarılmaya çalışıldığı bir oyun.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://serbeii.itch.io/tutsak-i-ararken" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>itch.io'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container now positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Oyun</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Godot</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 0 -->
+              <div data-aos="fade-up" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="mobile react">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/HISTanbulSQ1.png" alt="HISTanbul" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">HISTanbul (Istanbul Trip Planner)</h3>
+                    <p class="text-sm text-gray-300 mb-4">Aralık 2024</p>
+                    <p>İETT ve Tech İstanbul'un düzenlediği İstanbul'un Toplu Ulaşımında Akılcı Çözümler Hackathonu için 4 kişilik bir grupla 1 gün içinde turistler için hazır rotalarla İstanbul'u İETT otobüsleriyle gezdirmeyi hedefleyen bir uygulamayı React Native ile geliştirdik.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://github.com/betterbytebuilders/app-frontend" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>GitHub'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Mobil</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">React</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 1 -->
+              <div data-aos="fade-up" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="mobile react">
+                <div class="flex flex-col md:flex-row h-full">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/RadioAppSQ1.png" alt="Radiosphere" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Radiosphere (Internet Radio App)</h3>
+                    <p class="text-sm text-gray-300 mb-4">Temmuz 2024</p>
+                    <p>Mita'daki yaz stajım kapsamında React Native ile geliştirdiğim internet radyosu mobil uygulaması.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://github.com/omeralperguzel/RadioApp" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>GitHub'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Mobil</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">React</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 2 -->
+              <div data-aos="fade-up" data-aos-delay="100" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game unity">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/RushRacerSQ1.png" alt="Rush Racer" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Rush Racer</h3>
+                    <p class="text-sm text-gray-300 mb-4">Aralık 2023</p>
+                    <p>TED Üniversitesi SENG 463 dersi projesi olarak yapılmış, Unity üzerinden 2 pist ve farklı araçlarla yapılmış araba yarışı oyunu.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://github.com/duyguyesiloglu/RushRacer" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>GitHub'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Oyun</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Unity</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 3 -->
+              <div data-aos="fade-up" data-aos-delay="200" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game unity">
+                <div class="flex flex-col md:flex-row h-full">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/PostaSonKararSQ1.png" alt="Posta: Son Karar" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Posta: Son Karar</h3>
+                    <p class="text-sm text-gray-300 mb-4">Ekim 2023</p>
+                    <p>%100 Game Jam için yapılmış, hem karar alınıp hem postacının kontrol edilebildiği, yarışma sonucunda ilk 10'a girmiş oyun.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://alphe7.itch.io/posta-son-karar" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>itch.io'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Oyun</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Unity</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 4 -->
+              <div data-aos="fade-up" data-aos-delay="300" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="database java">
+                <div class="flex flex-col md:flex-row h-full">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/LibraryManagementPlaceholderSQ1.png" alt="Library Management System" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">MySQL Library Management System</h3>
+                    <p class="text-sm text-gray-300 mb-4">Mayıs 2023</p>
+                    <p>TED Üniversitesi CMPE 232 dersi projesi olarak yapılmış, MySQL ve Java Spring üzerinden yazılmış kütüphane yönetimi yazılımı.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://github.com/omeralperguzel" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>GitHub'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Database</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Java</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 5 -->
+              <div data-aos="fade-up" data-aos-delay="300" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game unity">
+                <div class="flex flex-col md:flex-row h-full">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/ReapingOfTheSowAd5.png" alt="Reaping Of The Sow" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Reaping Of The Sow</h3>
+                    <p class="text-sm text-gray-300 mb-4">Ekim 2022</p>
+                    <p>Greeny Game Jam 2022 için yapılmış, oyuncunun yaptıklarının sonuçlarını görebileceği 3 bölümlük bir oyun projesi.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://alphe7.itch.io/reaping-of-the-sow" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>itch.io'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Oyun</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Unity</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Project 6 -->
+              <div data-aos="fade-up" data-aos-delay="300" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game java">
+                <div class="flex flex-col md:flex-row h-full">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <img src="../codeproject/SuperMarioJavaSQ1.png" alt="Super Mario Bros. Prototype on Java" class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">Super Mario Bros. Prototype on Java</h3>
+                    <p class="text-sm text-gray-300 mb-4">Mayıs 2022</p>
+                    <p>TED Üniversitesi CMPE 114 dersi projesi olarak yapılmış, oyun içi arayüz, düşman, bölüm geçişlerinin denendiği bir oyun projesi.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://github.com/omeralperguzel/MarioGamePrototype" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>GitHub'da İncele</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <!-- Tag container positioned at bottom right -->
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag project-type px-3 py-1 rounded-full bg-accent text-dark text-xs font-medium shadow-sm">Oyun</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-secondary text-dark text-xs font-medium shadow-sm">Java</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="text-center mt-12">
               <a href="https://github.com/omeralperguzel" target="_blank" class="inline-block bg-primary hover:bg-primary/80 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">
                 <span class="flex items-center">
@@ -230,7 +448,7 @@
           </div>
         </section>
     </main>
-
+    
     <!-- Footer -->
     <footer class="bg-dark/80 backdrop-blur-md py-8">
       <div class="container mx-auto px-6">
@@ -272,31 +490,71 @@
     
     <!-- Scripts -->
     <script src="../script.js"></script>
+    <!-- Scrolled state -->
     <script>
       // Navbar scroll effect with layout change
       window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         const logoContainer = document.querySelector('.logo-container');
-        const headerLogo = document.querySelector('.header-logo');
-        const headerTitle = document.querySelector('.header-title');
+        const headerLogo = document.querySelector('.header-logo');  // Initial state
+        const headerTitle = document.querySelector('.header-title');;
         const navLinks = document.querySelector('.nav-links');
+        const isScrolled = window.scrollY > 50;
         
-        if (window.scrollY > 50) {
-          // Scrolled state
-          header.classList.add('py-2', 'shadow-lg');
-          logoContainer.classList.remove('mx-auto');
-          headerLogo.classList.remove('hidden'); // Show logo when scrolled
-          headerTitle.classList.add('hidden');
-          navLinks.classList.add('justify-end');
-        } else {
-          // Initial state
-          header.classList.remove('py-2', 'shadow-lg');
-          logoContainer.classList.add('mx-auto');
-          headerLogo.classList.add('hidden'); // Hide logo when at top
-          headerTitle.classList.remove('hidden');
-          navLinks.classList.remove('justify-end');
-        }
+        header.classList.toggle('py-2', isScrolled);
+        header.classList.toggle('shadow-lg', isScrolled);
+        logoContainer.classList.toggle('mx-auto', !isScrolled);
+        headerLogo.classList.toggle('hidden', !isScrolled); // Show logo when scrolled
+        headerTitle.classList.toggle('hidden', isScrolled);
+        navLinks.classList.toggle('justify-end', isScrolled);
       });
     </script>
+    <!-- Tag Filtering Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get all filter buttons and project cards
+        const filterButtons = document.querySelectorAll('.tag-filter');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        // Initial active button
+        let activeButton = document.querySelector('.tag-filter.active');
+        
+        // Filter projects function
+        function filterProjects(selectedTag) {
+          projectCards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags').split(' ');
+            
+            if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
+              card.classList.remove('hidden');
+              card.style.transform = 'translateY(0)';
+              card.style.opacity = '1';
+            } else {
+              card.classList.add('hidden');
+              card.style.transform = 'translateY(20px)';
+              card.style.opacity = '0';
+            }
+          });
+        }
+        
+        // Click event for filter buttons
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const selectedTag = this.getAttribute('data-tag');
+            
+            // Toggle active class on buttons
+            filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-dark/50'));
+            this.classList.add('active', 'bg-accent');
+            
+            // Filter projects
+            filterProjects(selectedTag);
+          });
+        });
+        
+        // Initial load - show all projects
+        filterProjects('all');
+      });
+    </script>
+</body>
+</html>
 </body>
 </html>
