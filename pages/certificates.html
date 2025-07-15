@@ -47,6 +47,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 </head>
 <body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
     <!-- Page Loader -->
@@ -127,6 +130,95 @@
             <p class="text-center max-w-2xl mx-auto mb-12">
               Burada kronolojik bir sıralama göstermektense sertifikaları ve eğitimleri kendimce sıralamayı ve gruplamayı tercih ettim.
             </p>
+
+            <!-- Coursera IBM Category -->
+            <div data-aos="fade-up" class="space-y-16">
+              <div>
+                <h3 class="text-2xl font-bold mb-8 text-primary">Coursera IBM AI Engineering Sertifikalarım</h3>
+                <p class="mb-8">2024 yaz tatilinde Coursera ve üniversitemizin anlaşması kapsamında aldığım IBM AI Engineering Coursera kurslarıdır. Bazı ödevlerini yetiştiremediğim için ödev sonrası sertifikalar üniversite sponsorluğunun dışında olacak.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                    <div class="flex flex-col md:flex-row">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/ibmlogo1.png" alt="IBM" class="certificate-logo">
+                      </div>
+                      <div class="md:w-2/3 p-6">
+                        <h4 class="text-xl font-bold mb-2 text-primary">Machine Learning with Python</h4>
+                        <p class="text-sm text-gray-300 mb-4">Temmuz 2024</p>
+                        <p>Bu kursta makine öğrenimi, Python'un kullanımı ve veri analizi hakkında bilgi edindim.</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                    <div class="flex flex-col md:flex-row">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/ibmlogo1.png" alt="IBM" class="certificate-logo">
+                      </div>
+                      <div class="md:w-2/3 p-6">
+                        <h4 class="text-xl font-bold mb-2 text-primary">Deep Learning with Keras and Tensorflow</h4>
+                        <p class="text-sm text-gray-300 mb-4">Temmuz 2024</p>
+                        <p>Bu kursta derin öğrenme ve Keras hakkında ek bilgi edindim.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            <!-- Etkinlik Katılım Sertifikaları - NEW SECTION -->
+            <div data-aos="fade-up">
+              <h3 class="text-2xl font-bold mb-8 text-primary">Etkinlik Katılım Sertifikaları</h3>
+              <p class="mb-8">Katıldığım konferans, etkinlik ve hackathon'larda aldığım katılım sertifikaları.</p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- IEEE SIU Conference Certificate - Make it clickable with certificate image -->
+                <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ieeesiu.png', '33. IEEE Sinyal İşleme ve İletişim Uygulamaları Kurultayı')">
+                  <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                      <img src="../certificates/isikunilogo1.png" alt="Işık Üniversitesi" class="certificate-logo">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                      <h4 class="text-xl font-bold mb-2 text-primary">33. IEEE Sinyal İşleme ve İletişim Uygulamaları Kurultayı</h4>
+                      <p class="text-sm text-gray-300 mb-4">Haziran 2025</p>
+                      <p>SİU 2025, akademisyenler ve endüstriden gelen araştırmacıların iletişim, sinyal işleme ve bu alanlardaki uygulamalarla ilgili en son gelişmeleri paylaştıkları, ülkemizin önde gelen platformlarından biridir. Işık Üniversitesi'nin Şile yerleşkesinde gerçekleşmiştir.</p>
+                      <div class="mt-2 text-accent">
+                        <span class="flex items-center text-sm">
+                          <span>Sertifikayı görüntülemek için tıklayın</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Istanbul Transportation Hackathon Certificate - Make it clickable with certificate image -->
+                <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ietthackathon.png', 'İstanbul\'un Toplu Ulaşımında Akılcı Çözümler Hackathonu')">
+                  <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                      <img src="../certificates/ibbbilgiislemlogo1.png" alt="İBB Bilgi İşlem" class="certificate-logo">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                      <h4 class="text-xl font-bold mb-2 text-primary">İstanbul'un Toplu Ulaşımında Akılcı Çözümler Hackathonu</h4>
+                      <p class="text-sm text-gray-300 mb-4">Aralık 2024</p>
+                      <p>İBB Bilgi İşlem Dairesi Başkanlığı ve İETT iş birliğiyle düzenlenen hackathona katıldım. 52 takımın başvurduğu bu etkinlikte, sınavla seçilen 10 finalist arasında yer aldık. 32 saat süren bu yoğun maratonda, İstanbul'un toplu ulaşımına inovatif çözümler sunmak için çalıştık.</p>
+                      <div class="mt-2 text-accent">
+                        <span class="flex items-center text-sm">
+                          <span>Sertifikayı görüntülemek için tıklayın</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             
             <!-- TEDÜ Patika.dev Category -->
             <div class="space-y-16">
@@ -137,8 +229,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">Patika.dev Staj Programı: Java</h4>
@@ -150,8 +242,8 @@
                   
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">TEDÜ Yazılıma Başlangıç Patikası</h4>
@@ -163,7 +255,7 @@
                 </div>
               </div>
 
-              <!-- Coursera Category -->
+              <!-- Coursera Calarts Category -->
               <div data-aos="fade-up">
                 <h3 class="text-2xl font-bold mb-8 text-primary">Coursera Calarts Sertifikalarım</h3>
                 <p class="mb-8">2023 ara tatilinde Coursera ve üniversitemizin anlaşması kapsamında aldığım Coursera kurslarıdır. Bazı ödevlerini yetiştiremediğim için ödev sonrası sertifikalar üniversite sponsorluğunun dışında olacak.</p>
@@ -171,8 +263,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/calartslogo1.png" alt="CalArts" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/calartslogo1.png" alt="CalArts" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">Introduction to Game Design</h4>
@@ -184,8 +276,8 @@
                   
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/calartslogo1.png" alt="CalArts" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/calartslogo1.png" alt="CalArts" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">Fundamentals of Graphic Design</h4>
@@ -205,8 +297,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/kagglelogo1.png" alt="Kaggle" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/kagglelogo1.png" alt="Kaggle" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">Certificate of Completion: Python</h4>
@@ -218,8 +310,8 @@
                   
                   <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
-                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50">
-                        <img src="../certificates/datacamplogo1.png" alt="DataCamp" class="w-24 h-24 object-contain">
+                      <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
+                        <img src="../certificates/datacamplogo1.png" alt="DataCamp" class="certificate-logo">
                       </div>
                       <div class="md:w-2/3 p-6">
                         <h4 class="text-xl font-bold mb-2 text-primary">St. of Acc. : Introduction to Python</h4>
@@ -500,6 +592,60 @@
           headerLogo.classList.add('hidden'); // Hide logo when at top
           headerTitle.classList.remove('hidden');
           navLinks.classList.remove('justify-end');
+        }
+      });
+    </script>
+    
+    <!-- Add the Certificate Modal at the end of the body -->
+    <div id="certificateModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-dark/90 rounded-xl max-w-5xl w-full max-h-[90vh] overflow-auto">
+        <div class="p-4 flex justify-between items-center border-b border-gray-700">
+          <h3 id="certificateTitle" class="text-xl font-bold text-white"></h3>
+          <button id="closeModal" class="text-gray-400 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="p-4 flex items-center justify-center">
+          <img id="certificateImage" src="" alt="Certificate" class="max-w-full max-h-[70vh] object-contain">
+        </div>
+      </div>
+    </div>
+
+    <!-- Add the certificate viewer JavaScript before the closing body tag -->
+    <script>
+      // Certificate Modal Functionality
+      const modal = document.getElementById('certificateModal');
+      const certificateImage = document.getElementById('certificateImage');
+      const certificateTitle = document.getElementById('certificateTitle');
+      const closeModal = document.getElementById('closeModal');
+      
+      function openCertificateModal(imageSrc, title) {
+        certificateImage.src = imageSrc;
+        certificateTitle.textContent = title;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+      }
+      
+      closeModal.addEventListener('click', function() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      });
+      
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Close modal with ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
         }
       });
     </script>
