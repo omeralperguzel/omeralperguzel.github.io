@@ -135,6 +135,94 @@
         background-color: rgba(237, 137, 54, 0.9);
         color: #1A202C;
       }
+
+      /* Add rounded corners to SmartSubway images */
+      .smartsubway-image {
+        border-radius: 8px;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .smartsubway-image:hover {
+        transform: scale(1.03);
+      }
+      
+      /* Image container for consistent height */
+      .image-container {
+        height: 200px;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      /* YouTube video container */
+      .video-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 8px;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
+
+      /* Style for centered images in component view */
+      .centered-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      /* Individual SmartSubway component cards that appear when filtering */
+      .smartsubway-component {
+        display: none; /* Hidden by default */
+      }
+
+      /* Added: Padding for media content and 10% smaller size */
+      .smartsubway-media-container {
+        width: 90%; /* 10% smaller */
+        margin: 0 auto;
+        padding: 12px;
+      }
+
+      .smartsubway-gallery {
+        padding: 8px;
+      }
+
+      /* Media item with padding */
+      .media-item {
+        padding: 6px;
+        height: 100%;
+      }
+
+      /* Square container for filtered view */
+      .square-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%; /* Makes it square */
+        overflow: hidden;
+      }
+      
+      .square-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     </style>
 
     <!-- jQuery -->
@@ -144,6 +232,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- GLightbox for Image Viewer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 </head>
 <body class="text-white">
     <!-- Page Loader -->
@@ -235,7 +327,6 @@
     </nav>
 
     <main class="pt-24">
-        <!-- Code Projects content - keep existing content -->
         <section id="codeproject" class="py-24 content-region">
           <div class="container mx-auto px-6">
             <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
@@ -291,7 +382,305 @@
               </div>
             </div>
             
+            <!-- Featured Project Section - SmartSubway -->
+            <div data-aos="fade-up" class="mb-16 featured-project" id="featuredSmartSubway">
+              <h3 class="text-2xl font-bold mb-6 text-center text-primary">
+                <span class="relative inline-block">
+                  <span class="absolute inset-x-0 bottom-0 h-1 bg-primary/50"></span>
+                  <span class="relative">Öne Çıkan Proje</span>
+                </span>
+              </h3>
+              
+              <div class="project-card bg-dark/40 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/30 transition-all duration-300 border border-primary/30" data-tags="web mobile unity react ai-ml">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-0">
+                  <!-- Project Image Gallery - New Layout with Larger Video on Top -->
+                  <div class="lg:col-span-2 h-full flex items-center">
+                    <div class="smartsubway-media-container">
+                      <div class="grid grid-cols-1 gap-2">
+                        <!-- YouTube Video -->
+                        <div class="media-item">
+                          <div class="video-container">
+                            <iframe width="914" height="514" src="https://www.youtube.com/embed/vKDlwE1DJpY" title="SmartSubway - TEDÜ Sunum Videosu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope: picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded-lg"></iframe>
+                          </div>
+                        </div>
+                        
+                        <!-- Three smaller images below in a row -->
+                        <div class="grid grid-cols-3 gap-2 h-40 smartsubway-gallery">
+                          <div class="media-item relative overflow-hidden">
+                            <a href="../codeproject/smartsubway/adminpanel-screenshot-1.png" class="glightbox" data-gallery="gallery-smartsubway">
+                              <img src="../codeproject/smartsubway/adminpanel-screenshot-1.png" alt="SmartSubway Admin Panel" class="w-full h-full object-cover rounded-lg smartsubway-image">
+                              <div class="absolute bottom-0 left-0 bg-dark/80 text-xs px-2 py-1 rounded-br-lg">Admin Panel</div>
+                            </a>
+                          </div>
+                          <div class="media-item relative overflow-hidden">
+                            <a href="../codeproject/smartsubway/mobile-screenshot-1.jpg" class="glightbox" data-gallery="gallery-smartsubway">
+                              <img src="../codeproject/smartsubway/mobile-screenshot-1.jpg" alt="SmartSubway Mobile App" class="w-full h-full object-cover rounded-lg smartsubway-image">
+                              <div class="absolute bottom-0 left-0 bg-dark/80 text-xs px-2 py-1 rounded-br-lg">Mobil Uygulama</div>
+                            </a>
+                          </div>
+                          <div class="media-item relative overflow-hidden">
+                            <a href="../codeproject/smartsubway/yolo-detection-1.png" class="glightbox" data-gallery="gallery-smartsubway">
+                              <img src="../codeproject/smartsubway/yolo-detection-1.png" alt="SmartSubway YOLO Implementation" class="w-full h-full object-cover rounded-lg smartsubway-image">
+                              <div class="absolute bottom-0 left-0 bg-dark/80 text-xs px-2 py-1 rounded-br-lg">YOLO Analizi</div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Project Description - 3 Columns on Large Screens -->
+                  <div class="lg:col-span-3 p-6 flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                      <h3 class="text-2xl md:text-3xl font-bold text-primary">SmartSubway</h3>
+                      <div class="flex items-center text-xs text-gray-300 border border-gray-700 rounded-full px-3 py-1 bg-dark/50">
+                        <span>CMPE 492</span>
+                        <span class="mx-2">•</span>
+                        <span>2024-2025</span>
+                      </div>
+                    </div>
+                    
+                    <p class="mb-4">
+                      <span class="font-semibold text-accent">Akıllı Metro Sistemleri için Kapsamlı Çözüm.</span> SmartSubway, geleneksel metro sistemlerini gerçek zamanlı veri analizi ve yapay zeka kullanarak daha verimli hale getiren bir projedir. YOLO algoritması ile kalabalık yoğunluğunu analiz ederek hem yolcu deneyimini hem de operasyonel verimliliği artırmayı hedefler.
+                    </p>
+                    
+                    <div class="mb-4">
+                      <h4 class="text-lg font-semibold mb-2 text-accent">Proje Bileşenleri:</h4>
+                      <ul class="space-y-2">
+                        <li class="flex items-start">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          <div>
+                            <span class="font-medium">Admin Paneli:</span> Metro operatörlerine yönelik gerçek zamanlı izleme, kaynak yönetimi ve güvenlik kontrolleri sağlayan web arayüzü.
+                          </div>
+                        </li>
+                        <li class="flex items-start">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          <div>
+                            <span class="font-medium">Mobil Uygulama:</span> Yolcular için kalabalık yoğunluğuna göre optimum rota önerileri ve gerçek zamanlı bilgilendirme sağlayan mobil arayüz.
+                          </div>
+                        </li>
+                        <li class="flex items-start">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          <div>
+                            <span class="font-medium">Unity Simülasyon Ortamı:</span> AI modellerini test etmek için gerçekçi yolcu akışları ve tren operasyonlarını simüle eden 3D ortam.
+                          </div>
+                        </li>
+                        <li class="flex items-start">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          <div>
+                            <span class="font-medium">AI Entegrasyonu:</span> YOLO algoritması ile kalabalık tespiti ve Gemini LLM ile akıllı karar destek sistemi.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                      <h4 class="text-lg font-semibold mb-2 text-accent">Proje Rolüm:</h4>
+                      <p>Bu projede <strong class="text-primary">takım lideri</strong> olarak görev aldım ve projenin her aşamasında aktif rol oynadım:</p>
+                      <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>Admin panelinin tüm geliştirme sürecinde aktif çalışma</li>
+                        <li>Mobil uygulama geliştirme sürecinin denetimi</li>
+                        <li>Unity simülasyon ortamının geliştirilmesi</li>
+                        <li>Gemini LLM entegrasyonu ve implementasyonu</li>
+                      </ul>
+                    </div>
+                    
+                    <div class="mt-auto">
+                      <div class="mb-3">
+                        <h4 class="text-lg font-semibold mb-2 text-accent">Kullanılan Teknolojiler:</h4>
+                        <div class="flex flex-wrap gap-2">
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">React</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">React Native</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">Unity 6</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">Blender</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">YOLO</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">Gemini LLM</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">Leaflet.js</span>
+                          <span class="bg-dark/50 text-primary border border-primary/30 px-2 py-1 rounded-md text-xs">OpenStreetMap</span>
+                        </div>
+                      </div>
+                      
+                      <div class="flex justify-between items-center">
+                        <div class="flex gap-3">
+                          <a href="https://eo.wtf/CMPE491Website/" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                            <span class="flex items-center">
+                              <span>Proje Web Sitesi</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </span>
+                          </a>
+                          <a href="https://youtu.be/vKDlwE1DJpY" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                            <span class="flex items-center">
+                              <span>Video</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                        
+                        <!-- Tag container positioned at bottom right -->
+                        <div class="flex flex-wrap gap-1.5 justify-end">
+                          <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Web</span>
+                          <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Mobil</span>
+                          <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">React</span>
+                          <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">Unity</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Main projects grid with proper alignment -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsContainer">
+              <!-- SmartSubway Component Cards (moved inside the grid) -->
+              <!-- Admin Panel Component -->
+              <div data-aos="fade-up" class="project-card smartsubway-component bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="web react">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <a href="../codeproject/SmartSubwaySQ1.png" class="glightbox" data-gallery="gallery-smartsubway-components">
+                        <img src="../codeproject/SmartSubwaySQ1.png" alt="SmartSubway" class="w-full h-full object-cover">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">SmartSubway: Admin Paneli</h3>
+                    <p class="text-sm text-gray-300 mb-4">2024-2025</p>
+                    <p>Metro operatörlerine yönelik gerçek zamanlı izleme, kaynak yönetimi ve güvenlik kontrolleri sağlayan web arayüzü. React ve Leaflet.js kullanılarak geliştirildi.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://eo.wtf/CMPE491Website/" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>Proje Web Sitesi</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Web</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">React</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Mobile App Component -->
+              <div data-aos="fade-up" class="project-card smartsubway-component bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="mobile react">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <a href="../codeproject/SmartSubwaySQ1.png" class="glightbox" data-gallery="gallery-smartsubway-components">
+                        <img src="../codeproject/SmartSubwaySQ1.png" alt="SmartSubway" class="w-full h-full object-cover">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">SmartSubway: Mobil Uygulama</h3>
+                    <p class="text-sm text-gray-300 mb-4">2024-2025</p>
+                    <p>Yolcular için kalabalık yoğunluğuna göre optimum rota önerileri ve gerçek zamanlı bilgilendirme sağlayan React Native tabanlı mobil uygulama.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://eo.wtf/CMPE491Website/" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>Proje Web Sitesi</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag platform px-3 py-1 rounded-full bg-primary text-white text-xs font-medium shadow-sm">Mobil</span>
+                        <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">React</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Unity Simulation Component -->
+              <div data-aos="fade-up" class="project-card smartsubway-component bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="unity">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <a href="../codeproject/SmartSubwaySQ1.png" class="glightbox" data-gallery="gallery-smartsubway-components">
+                        <img src="../codeproject/SmartSubwaySQ1.png" alt="SmartSubway" class="w-full h-full object-cover">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">SmartSubway: Unity Simülasyonu</h3>
+                    <p class="text-sm text-gray-300 mb-4">2024-2025</p>
+                    <p>AI modellerini test etmek için Unity 6 ile geliştirilmiş, gerçekçi yolcu akışları ve tren operasyonlarını simüle eden 3D ortam.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://youtu.be/vKDlwE1DJpY" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>YouTube'da İzle</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">Unity</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Gemini LLM Component -->
+              <div data-aos="fade-up" class="project-card smartsubway-component bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="ai-ml">
+                <div class="flex flex-col md:flex-row h-full relative">
+                  <div class="md:w-2/5 h-full">
+                    <div class="h-full">
+                      <a href="../codeproject/SmartSubwaySQ1.png" class="glightbox" data-gallery="gallery-smartsubway-components">
+                        <img src="../codeproject/SmartSubwaySQ1.png" alt="SmartSubway" class="w-full h-full object-cover">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="md:w-3/5 p-6 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-2 text-accent">SmartSubway: Gemini LLM</h3>
+                    <p class="text-sm text-gray-300 mb-4">2024-2025</p>
+                    <p>YOLO tarafından tespit edilen kalabalık yoğunluğu verileri ve diğer sistem verilerini kullanarak akıllı karar verme ve optimizasyon önerileri sağlayan Gemini LLM entegrasyonu.</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                      <a href="https://eo.wtf/CMPE491Website/" target="_blank" class="inline-block text-accent hover:text-white transition-colors duration-300">
+                        <span class="flex items-center">
+                          <span>Proje Web Sitesi</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </span>
+                      </a>
+                      
+                      <div class="flex flex-wrap gap-1.5 justify-end">
+                        <span class="tag language px-3 py-1 rounded-full bg-orange text-dark text-xs font-medium shadow-sm">AI/ML</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- Project -1 -->
               <div data-aos="fade-up" class="project-card bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-accent/20 transition-all duration-300" data-tags="game godot">
                 <div class="flex flex-col md:flex-row h-full relative">
@@ -612,6 +1001,13 @@
     <!-- Scripts -->
     <script src="../script.js"></script>
     <script>
+      // Initialize GLightbox
+      const lightbox = GLightbox({
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+      });
+
       // Navbar scroll effect with layout change
       window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
@@ -641,6 +1037,8 @@
       document.addEventListener('DOMContentLoaded', function() {
         const filterButtons = document.querySelectorAll('.tag-filter');
         const projectCards = document.querySelectorAll('.project-card');
+        const featuredProject = document.getElementById('featuredSmartSubway');
+        const smartSubwayComponents = document.querySelectorAll('.smartsubway-component');
         
         filterButtons.forEach(button => {
           button.addEventListener('click', function() {
@@ -650,24 +1048,88 @@
             filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-dark/50'));
             this.classList.add('active', 'bg-accent');
             
-            // Filter projects
-            filterProjects(selectedTag);
+            // Special handling for filtering
+            if (selectedTag === 'all') {
+              // Show featured project, hide individual components
+              featuredProject.style.display = 'block';
+              smartSubwayComponents.forEach(component => {
+                component.style.display = 'none';
+              });
+              
+              // Show all other projects
+              projectCards.forEach(card => {
+                if (!card.classList.contains('smartsubway-component')) {
+                  card.style.display = 'block';
+                  card.classList.add('animated-fadeIn');
+                }
+              });
+            } else {
+              // Hide featured project
+              featuredProject.style.display = 'none';
+              
+              // Show matching smartsubway components
+              smartSubwayComponents.forEach(component => {
+                const componentTags = component.getAttribute('data-tags').split(' ');
+                if (componentTags.includes(selectedTag)) {
+                  component.style.display = 'block';
+                  component.classList.add('animated-fadeIn');
+                } else {
+                  component.style.display = 'none';
+                  component.classList.remove('animated-fadeIn');
+                }
+              });
+              
+              // Filter regular projects
+              projectCards.forEach(card => {
+                if (!card.classList.contains('smartsubway-component')) {
+                  const cardTags = card.getAttribute('data-tags')?.split(' ') || [];
+                  
+                  if (cardTags.includes(selectedTag)) {
+                    card.style.display = 'block';
+                    card.classList.add('animated-fadeIn');
+                  } else {
+                    card.style.display = 'none';
+                    card.classList.remove('animated-fadeIn');
+                  }
+                }
+              });
+            }
           });
         });
         
-        function filterProjects(tag) {
-          projectCards.forEach(card => {
-            const cardTags = card.getAttribute('data-tags')?.split(' ') || [];
-            
-            if (tag === 'all' || cardTags.includes(tag)) {
-              card.style.display = 'block';
-              card.classList.add('animated-fadeIn');
-            } else {
-              card.style.display = 'none';
-              card.classList.remove('animated-fadeIn');
-            }
-          });
-        }
+        // Image Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const imageTitle = document.getElementById('imageTitle');
+        const closeImageModal = document.getElementById('closeImageModal');
+        
+        window.openImageModal = function(imageSrc, title) {
+          modalImage.src = imageSrc;
+          imageTitle.textContent = title;
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+        };
+        
+        closeImageModal.addEventListener('click', function() {
+          modal.classList.add('hidden');
+          document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
         
         // Set up a mutation observer to detect theme changes and update content accordingly
         const observer = new MutationObserver(function(mutations) {
