@@ -22,11 +22,16 @@
         theme: {
           extend: {
             colors: {
-              primary: '#EF476F',
-              secondary: '#FFD166',
-              accent: '#06D6A0',
-              info: '#118AB2',
-              dark: '#073B4C',
+              primary: '#3182CE',    // Professional blue
+              secondary: '#4A5568',  // Slate gray
+              accent: '#38B2AC',     // Muted teal
+              info: '#63B3ED',       // Light blue
+              dark: '#1A202C',       // Deep blue-gray
+              gray: {
+                light: '#E2E8F0',    // Light gray for borders
+                medium: '#A0AEC0',   // Medium gray for text
+              },
+              purple: '#9F7AEA'      // Added new purple color
             },
             fontFamily: {
               sans: ['Montserrat', 'sans-serif'],
@@ -39,6 +44,87 @@
     
     <!-- Custom styles -->
     <link href="../style.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Theme-specific styles for tag filters -->
+    <style>
+      /* Base styles for both themes */
+      .tag-filter {
+        transition: all 0.3s ease;
+      }
+      
+      /* Dark theme (default) - No changes needed as these are already defined in the HTML */
+      
+      /* Light theme adjustments */
+      html[data-theme="light"] .tag-filter[data-tag="all"] {
+        background-color: rgba(26, 32, 44, 0.8);
+        color: white;
+      }
+      html[data-theme="light"] .tag-filter[data-tag="all"]:hover {
+        background-color: rgba(26, 32, 44, 1);
+      }
+      
+      /* Time Period buttons (Info color) */
+      html[data-theme="light"] .tag-filter[data-tag^="202"] {
+        background-color: rgba(99, 179, 237, 0.2);
+        color: #2b6cb0;
+        border: 1px solid rgba(99, 179, 237, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag^="202"]:hover {
+        background-color: #63b3ed;
+        color: white;
+      }
+      
+      /* Certificate Type buttons (Accent color) */
+      html[data-theme="light"] .tag-filter[data-tag="course"],
+      html[data-theme="light"] .tag-filter[data-tag="event"],
+      html[data-theme="light"] .tag-filter[data-tag="hackathon"] {
+        background-color: rgba(56, 178, 172, 0.2);
+        color: #2c7a7b;
+        border: 1px solid rgba(56, 178, 172, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag="course"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="event"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="hackathon"]:hover {
+        background-color: #38b2ac;
+        color: white;
+      }
+      
+      /* Industry Sector buttons (Purple color) */
+      html[data-theme="light"] .tag-filter[data-tag="programming"],
+      html[data-theme="light"] .tag-filter[data-tag="ai-ml"],
+      html[data-theme="light"] .tag-filter[data-tag="design"],
+      html[data-theme="light"] .tag-filter[data-tag="cybersecurity"],
+      html[data-theme="light"] .tag-filter[data-tag="art"] {
+        background-color: rgba(159, 122, 234, 0.2);
+        color: #553c9a;
+        border: 1px solid rgba(159, 122, 234, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag="programming"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="ai-ml"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="design"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="cybersecurity"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="art"]:hover {
+        background-color: #9f7aea;
+        color: white;
+      }
+      
+      /* Active state styling for all buttons */
+      html[data-theme="light"] .tag-filter.active {
+        box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+        font-weight: 600;
+      }
+      
+      /* Group title colors for light mode */
+      html[data-theme="light"] .filter-group .text-info {
+        color: #2b6cb0;
+      }
+      html[data-theme="light"] .filter-group .text-accent {
+        color: #2c7a7b;
+      }
+      html[data-theme="light"] .filter-group .text-purple {
+        color: #553c9a;
+      }
+    </style>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -51,7 +137,7 @@
     <!-- GLightbox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 </head>
-<body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
+<body class="text-white">
     <!-- Page Loader -->
     <div id="pageLoader">
         <div class="spinner"></div>
@@ -85,6 +171,18 @@
               <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
               <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
               <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li>
+                <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <!-- Sun icon for dark mode (initially visible) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                  </svg>
+                  <!-- Moon icon for light mode (initially hidden) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
@@ -112,6 +210,18 @@
           <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
           <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
           <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li class="mt-4 flex justify-center">
+            <button id="mobileThemeToggle" class="flex items-center justify-center p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+              <!-- Sun icon for dark mode (initially visible) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+              </svg>
+              <!-- Moon icon for light mode (initially hidden) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -162,15 +272,15 @@
                     </div>
                   </div>
                   
-                  <!-- Industry Sector Group - Secondary Color -->
+                  <!-- Industry Sector Group - Changed to Purple Color -->
                   <div class="filter-group">
-                    <div class="text-center mb-2 text-sm font-medium text-secondary">Sektör/Alan</div>
+                    <div class="text-center mb-2 text-sm font-medium text-purple">Sektör/Alan</div>
                     <div class="flex gap-2 flex-wrap justify-center">
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="programming">Programlama</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="ai-ml">Yapay Zeka</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="design">Tasarım</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="cybersecurity">Siber Güvenlik</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="art">Çizim/Sanat</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-purple/30 hover:bg-purple text-purple hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="programming">Programlama</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-purple/30 hover:bg-purple text-purple hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="ai-ml">Yapay Zeka</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-purple/30 hover:bg-purple text-purple hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="design">Tasarım</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-purple/30 hover:bg-purple text-purple hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="cybersecurity">Siber Güvenlik</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-purple/30 hover:bg-purple text-purple hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="art">Çizim/Sanat</button>
                     </div>
                   </div>
                 </div>
@@ -640,6 +750,54 @@
           navLinks.classList.remove('justify-end');
         }
       });
+      
+      // Handle desktop theme toggle
+      document.getElementById('themeToggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Apply the new theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // Update icons visibility
+        updateThemeIcons(newTheme);
+        
+        // Save user preference
+        localStorage.setItem('theme', newTheme);
+      });
+      
+      // Handle mobile theme toggle
+      document.getElementById('mobileThemeToggle').addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Apply the new theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // Update icons visibility
+        updateThemeIcons(newTheme);
+        
+        // Save user preference
+        localStorage.setItem('theme', newTheme);
+      });
+      
+      function updateThemeIcons(theme) {
+        const sunIcons = document.querySelectorAll('.sun-icon');
+        const moonIcons = document.querySelectorAll('.moon-icon');
+        
+        if (theme === 'light') {
+          sunIcons.forEach(icon => icon.classList.add('hidden'));
+          moonIcons.forEach(icon => icon.classList.remove('hidden'));
+        } else {
+          sunIcons.forEach(icon => icon.classList.remove('hidden'));
+          moonIcons.forEach(icon => icon.classList.add('hidden'));
+        }
+      }
+      
+      // Apply theme on page load
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcons(savedTheme);
     </script>
     
     <!-- Add the Certificate Modal at the end of the body -->
@@ -743,12 +901,10 @@
           
           // Then handle category visibility
           if (selectedTag === 'all') {
-            // Show all category headings and descriptions at full size
+            // Show all category headings and descriptions
             document.querySelectorAll('[data-category-element]').forEach(el => {
               el.style.display = '';
               el.style.opacity = '1';
-              el.style.fontSize = '';
-              el.style.marginBottom = '';
             });
             
             // Show all categories
@@ -757,6 +913,11 @@
               category.style.marginBottom = '';
             });
           } else {
+            // Hide all category headings and descriptions
+            document.querySelectorAll('[data-category-element]').forEach(el => {
+              el.style.display = 'none';
+            });
+            
             // For each category, check if it has any visible certificates
             categoryContainers.forEach(category => {
               // Find certificates within this category that match the filter
@@ -767,87 +928,82 @@
               });
               
               if (hasVisibleCards) {
-                // This category has visible certificates, collapse the heading/description
+                // This category has visible certificates, show the container
                 category.style.display = 'block';
                 category.style.marginBottom = '2rem';
-                
-                const heading = category.querySelector('[data-category-element="heading"]');
-                const description = category.querySelector('[data-category-element="description"]');
-                
-                if (heading) {
-                  heading.style.display = 'block';
-                  heading.style.opacity = '0.7';
-                  heading.style.fontSize = '1.25rem';
-                  heading.style.marginBottom = '0.5rem';
-                }
-                
-                if (description) {
-                  description.style.display = 'block';
-                  description.style.opacity = '0.6';
-                  description.style.fontSize = '0.875rem';
-                  description.style.marginBottom = '1rem';
-                }
               } else {
-                // No visible certificates in this category, hide it completely
+                // Hide categories without matching certificates
                 category.style.display = 'none';
               }
             });
           }
         }
         
-        // Click event for filter buttons
+        // Attach click events to tag filter buttons
         filterButtons.forEach(button => {
           button.addEventListener('click', function() {
             const selectedTag = this.getAttribute('data-tag');
-            
-            // Check if clicking the same button again (toggle functionality)
-            if (currentActiveTag === selectedTag && selectedTag !== 'all') {
-              // If same button clicked, deactivate it and activate "All" button
-              filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-info', 'bg-secondary', 'bg-dark'));
-              allButton.classList.add('active', 'bg-dark');
-              currentActiveTag = 'all';
-              
-              // Show all certificates
-              filterCertificates('all');
-              return;
+            if (currentActiveTag !== selectedTag) {
+              document.querySelector('.tag-filter.active').classList.remove('active');
+              this.classList.add('active');
+              currentActiveTag = selectedTag;
+              filterCertificates(selectedTag);
             }
-            
-            // Update current active tag
-            currentActiveTag = selectedTag;
-            
-            // Toggle active class on buttons
-            filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-info', 'bg-secondary', 'bg-dark'));
-            this.classList.add('active');
-            
-            // Add special styling based on button group
-            if (this.getAttribute('data-tag') === 'all') {
-              this.classList.add('bg-dark');
-            } else if (this.closest('.filter-group').querySelector('.text-accent')) {
-              this.classList.add('bg-accent');
-            } else if (this.closest('.filter-group').querySelector('.text-info')) {
-              this.classList.add('bg-info');
-            } else if (this.closest('.filter-group').querySelector('.text-secondary')) {
-              this.classList.add('bg-secondary');
-            }
-            
-            // Filter certificates
-            filterCertificates(selectedTag);
           });
         });
-        
-        // Add some CSS for transitions
-        const style = document.createElement('style');
-        style.textContent = `
-          [data-category-element], [data-category] {
-            transition: all 0.4s ease-in-out;
-          }
-        `;
-        document.head.appendChild(style);
-        
-        // Initial load - show all certificates
-        filterCertificates('all');
       });
     </script>
-</body>
+
+    <!-- Fix for the theme toggle functionality -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Apply theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateAllThemeIcons(savedTheme);
+        
+        // Function to update all theme icons (both desktop and mobile)
+        function updateAllThemeIcons(theme) {
+          const sunIcons = document.querySelectorAll('.sun-icon');
+          const moonIcons = document.querySelectorAll('.moon-icon');
+          
+          if (theme === 'light') {
+            sunIcons.forEach(icon => icon.classList.add('hidden'));
+            moonIcons.forEach(icon => icon.classList.remove('hidden'));
+          } else {
+            sunIcons.forEach(icon => icon.classList.remove('hidden'));
+            moonIcons.forEach(icon => icon.classList.add('hidden'));
+          }
+        }
+        
+        // Function to toggle theme that both desktop and mobile buttons will use
+        function toggleTheme() {
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          // Apply the new theme
+          document.documentElement.setAttribute('data-theme', newTheme);
+          
+          // Update all icons visibility
+          updateAllThemeIcons(newTheme);
+          
+          // Save user preference
+          localStorage.setItem('theme', newTheme);
+        }
+        
+        // Handle desktop theme toggle
+        const desktopThemeToggle = document.getElementById('themeToggle');
+        if (desktopThemeToggle) {
+          desktopThemeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        // Handle mobile theme toggle
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        if (mobileThemeToggle) {
+          mobileThemeToggle.addEventListener('click', toggleTheme);
+        }
+      });
+    </script>
+  </body>
 </html>
 

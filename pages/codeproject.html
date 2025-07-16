@@ -22,11 +22,16 @@
         theme: {
           extend: {
             colors: {
-              primary: '#EF476F',
-              secondary: '#FFD166',
-              accent: '#06D6A0',
-              info: '#118AB2',
-              dark: '#073B4C',
+              primary: '#3182CE',    // Professional blue
+              secondary: '#4A5568',  // Slate gray
+              accent: '#38B2AC',     // Muted teal
+              info: '#63B3ED',       // Light blue
+              dark: '#1A202C',       // Deep blue-gray
+              gray: {
+                light: '#E2E8F0',    // Light gray for borders
+                medium: '#A0AEC0',   // Medium gray for text
+              },
+              orange: '#ED8936'      // Added new orange color for tech tags
             },
             fontFamily: {
               sans: ['Montserrat', 'sans-serif'],
@@ -40,6 +45,98 @@
     <!-- Custom styles -->
     <link href="../style.css" rel="stylesheet" type="text/css" />
 
+    <!-- Theme-specific styles for tag filters -->
+    <style>
+      /* Base styles for both themes */
+      .tag-filter {
+        transition: all 0.3s ease;
+      }
+      
+      /* Light theme adjustments */
+      html[data-theme="light"] .tag-filter[data-tag="all"] {
+        background-color: rgba(26, 32, 44, 0.8);
+        color: white;
+      }
+      html[data-theme="light"] .tag-filter[data-tag="all"]:hover {
+        background-color: rgba(26, 32, 44, 1);
+      }
+      
+      /* Project Types Group (Accent color) */
+      html[data-theme="light"] .tag-filter[data-tag="game"],
+      html[data-theme="light"] .tag-filter[data-tag="database"] {
+        background-color: rgba(56, 178, 172, 0.2);
+        color: #2c7a7b;
+        border: 1px solid rgba(56, 178, 172, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag="game"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="database"]:hover {
+        background-color: #38b2ac;
+        color: white;
+      }
+      
+      /* Platforms Group (Primary color) */
+      html[data-theme="light"] .tag-filter[data-tag="mobile"],
+      html[data-theme="light"] .tag-filter[data-tag="web"] {
+        background-color: rgba(49, 130, 206, 0.2);
+        color: #2b6cb0;
+        border: 1px solid rgba(49, 130, 206, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag="mobile"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="web"]:hover {
+        background-color: #3182ce;
+        color: white;
+      }
+      
+      /* Programming Languages/Technologies Group (Orange color) */
+      html[data-theme="light"] .tag-filter[data-tag="react"],
+      html[data-theme="light"] .tag-filter[data-tag="java"],
+      html[data-theme="light"] .tag-filter[data-tag="unity"],
+      html[data-theme="light"] .tag-filter[data-tag="godot"] {
+        background-color: rgba(237, 137, 54, 0.2);
+        color: #c05621;
+        border: 1px solid rgba(237, 137, 54, 0.5);
+      }
+      html[data-theme="light"] .tag-filter[data-tag="react"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="java"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="unity"]:hover,
+      html[data-theme="light"] .tag-filter[data-tag="godot"]:hover {
+        background-color: #ed8936;
+        color: white;
+      }
+      
+      /* Active state styling for all buttons */
+      html[data-theme="light"] .tag-filter.active {
+        box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+        font-weight: 600;
+      }
+      
+      /* Group title colors for light mode */
+      html[data-theme="light"] .filter-group .text-accent {
+        color: #2c7a7b;
+      }
+      html[data-theme="light"] .filter-group .text-primary {
+        color: #2b6cb0;
+      }
+      html[data-theme="light"] .filter-group .text-orange,
+      html[data-theme="light"] .filter-group .text-secondary {
+        color: #c05621;
+      }
+      
+      /* Project card tags in light mode */
+      html[data-theme="light"] .tag.project-type {
+        background-color: rgba(56, 178, 172, 0.9);
+        color: #1A202C;
+      }
+      html[data-theme="light"] .tag.platform {
+        background-color: rgba(49, 130, 206, 0.9);
+        color: white;
+      }
+      html[data-theme="light"] .tag.language {
+        background-color: rgba(237, 137, 54, 0.9);
+        color: #1A202C;
+      }
+    </style>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -48,7 +145,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
+<body class="text-white">
     <!-- Page Loader -->
     <div id="pageLoader">
         <div class="spinner"></div>
@@ -82,6 +179,18 @@
               <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
               <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
               <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li>
+                <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <!-- Sun icon for dark mode (initially visible) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                  </svg>
+                  <!-- Moon icon for light mode (initially hidden) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
@@ -109,6 +218,18 @@
           <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
           <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
           <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li class="mt-4 flex justify-center">
+            <button id="mobileThemeToggle" class="flex items-center justify-center p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+              <!-- Sun icon for dark mode (initially visible) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+              </svg>
+              <!-- Moon icon for light mode (initially hidden) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -156,14 +277,14 @@
                     </div>
                   </div>
                   
-                  <!-- Programming Languages/Technologies Group - Secondary Color -->
+                  <!-- Programming Languages/Technologies Group - Orange Color (Changed from Secondary) -->
                   <div class="filter-group">
-                    <div class="text-center mb-2 text-sm font-medium text-secondary">Programlama Dili/Teknoloji</div>
+                    <div class="text-center mb-2 text-sm font-medium text-orange">Programlama Dili/Teknoloji</div>
                     <div class="flex gap-2 flex-wrap justify-center">
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="react">React</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="java">Java</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="unity">Unity</button>
-                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="godot">Godot</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-orange/30 hover:bg-orange text-orange hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="react">React</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-orange/30 hover:bg-orange text-orange hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="java">Java</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-orange/30 hover:bg-orange text-orange hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="unity">Unity</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-orange/30 hover:bg-orange text-orange hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="godot">Godot</button>
                     </div>
                   </div>
                 </div>
@@ -490,53 +611,37 @@
     
     <!-- Scripts -->
     <script src="../script.js"></script>
-    <!-- Scrolled state -->
     <script>
       // Navbar scroll effect with layout change
       window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         const logoContainer = document.querySelector('.logo-container');
-        const headerLogo = document.querySelector('.header-logo');  // Initial state
-        const headerTitle = document.querySelector('.header-title');;
+        const headerLogo = document.querySelector('.header-logo');
+        const headerTitle = document.querySelector('.header-title');
         const navLinks = document.querySelector('.nav-links');
-        const isScrolled = window.scrollY > 50;
         
-        header.classList.toggle('py-2', isScrolled);
-        header.classList.toggle('shadow-lg', isScrolled);
-        logoContainer.classList.toggle('mx-auto', !isScrolled);
-        headerLogo.classList.toggle('hidden', !isScrolled); // Show logo when scrolled
-        headerTitle.classList.toggle('hidden', isScrolled);
-        navLinks.classList.toggle('justify-end', isScrolled);
+        if (window.scrollY > 50) {
+          // Scrolled state
+          header.classList.add('py-2', 'shadow-lg');
+          logoContainer.classList.remove('mx-auto');
+          headerLogo.classList.remove('hidden'); // Show logo when scrolled
+          headerTitle.classList.add('hidden');
+          navLinks.classList.add('justify-end');
+        } else {
+          // Initial state
+          header.classList.remove('py-2', 'shadow-lg');
+          logoContainer.classList.add('mx-auto');
+          headerLogo.classList.add('hidden'); // Hide logo when at top
+          headerTitle.classList.remove('hidden');
+          navLinks.classList.remove('justify-end');
+        }
       });
-    </script>
-    <!-- Tag Filtering Script -->
-    <script>
+      
+      // Tag filtering functionality
       document.addEventListener('DOMContentLoaded', function() {
-        // Get all filter buttons and project cards
         const filterButtons = document.querySelectorAll('.tag-filter');
         const projectCards = document.querySelectorAll('.project-card');
         
-        // Initial active button
-        let activeButton = document.querySelector('.tag-filter.active');
-        
-        // Filter projects function
-        function filterProjects(selectedTag) {
-          projectCards.forEach(card => {
-            const cardTags = card.getAttribute('data-tags').split(' ');
-            
-            if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
-              card.classList.remove('hidden');
-              card.style.transform = 'translateY(0)';
-              card.style.opacity = '1';
-            } else {
-              card.classList.add('hidden');
-              card.style.transform = 'translateY(20px)';
-              card.style.opacity = '0';
-            }
-          });
-        }
-        
-        // Click event for filter buttons
         filterButtons.forEach(button => {
           button.addEventListener('click', function() {
             const selectedTag = this.getAttribute('data-tag');
@@ -550,11 +655,39 @@
           });
         });
         
-        // Initial load - show all projects
-        filterProjects('all');
+        function filterProjects(tag) {
+          projectCards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags')?.split(' ') || [];
+            
+            if (tag === 'all' || cardTags.includes(tag)) {
+              card.style.display = 'block';
+              card.classList.add('animated-fadeIn');
+            } else {
+              card.style.display = 'none';
+              card.classList.remove('animated-fadeIn');
+            }
+          });
+        }
+        
+        // Set up a mutation observer to detect theme changes and update content accordingly
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+              const theme = document.documentElement.getAttribute('data-theme');
+              console.log("Theme changed to:", theme);
+              
+              // Apply any page-specific theme adjustments here if needed
+              // This can be empty if no special handling is needed - script.js handles the icons
+            }
+          });
+        });
+        
+        // Start observing the document element for theme attribute changes
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
       });
     </script>
-</body>
-</html>
-</body>
+  </body>
 </html>

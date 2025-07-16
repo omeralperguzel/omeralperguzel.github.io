@@ -91,6 +91,21 @@ function revealOnScroll() {
   });
 }
 
+// Page loader
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('pageLoader').style.opacity = '0';
+    setTimeout(function() {
+      document.getElementById('pageLoader').style.display = 'none';
+    }, 300);
+  }, 500);
+  
+  // Make sure a page is loaded on initial page load
+  if (!location.hash && location.pathname === '/index.html') {
+    location.hash = '#home';
+  }
+});
+
 // Document ready function
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize AOS
@@ -115,6 +130,55 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
   }
   
+  // Theme toggle functionality
+  const themeToggleBtn = document.getElementById('themeToggle');
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  
+  // Check if user has a saved theme preference
+  const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark theme
+  
+  // Apply the saved theme on page load
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  // Only call updateThemeIcons if we're on a page with theme toggle buttons
+  if (themeToggleBtn && (sunIcon || moonIcon)) {
+    updateThemeIcons(savedTheme);
+  }
+  
+  // Handle theme toggle click
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Apply the new theme
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      // Update icons visibility if they exist
+      if (sunIcon || moonIcon) {
+        updateThemeIcons(newTheme);
+      }
+      
+      // Save user preference
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+  
+  function updateThemeIcons(theme) {
+    // Get all theme icons in the page
+    const sunIcons = document.querySelectorAll('.sun-icon');
+    const moonIcons = document.querySelectorAll('.moon-icon');
+    
+    if (theme === 'light') {
+      sunIcons.forEach(icon => icon.classList.add('hidden'));
+      moonIcons.forEach(icon => icon.classList.remove('hidden'));
+    } else {
+      sunIcons.forEach(icon => icon.classList.remove('hidden'));
+      moonIcons.forEach(icon => icon.classList.add('hidden'));
+    }
+  }
+
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const closeMenu = document.getElementById('closeMenu');
@@ -135,17 +199,50 @@ document.addEventListener('DOMContentLoaded', function() {
   // Navbar scroll effect
   window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add('py-2');
-        header.classList.add('shadow-lg');
-      } else {
-        header.classList.remove('py-2');
-        header.classList.remove('shadow-lg');
-      }
-    }
+    const logoContainer = document.querySelector('.logo-container');
+    const headerLogo = document.querySelector('.header-logo');
+    const headerTitle = document.querySelector('.header-title');
+    const navLinks = document.querySelector('.nav-links');
     
-    // Call reveal animations
-    revealOnScroll();
+    if (window.scrollY > 50) {
+      // Scrolled state
+      header.classList.add('py-2', 'shadow-lg');
+      logoContainer.classList.remove('mx-auto');
+      headerLogo.classList.remove('hidden'); // Show logo when scrolled
+      headerTitle.classList.add('hidden');
+      navLinks.classList.add('justify-end');
+    } else {
+      // Initial state
+      header.classList.remove('py-2', 'shadow-lg');
+      logoContainer.classList.add('mx-auto');
+      headerLogo.classList.add('hidden'); // Hide logo when at top
+      headerTitle.classList.remove('hidden');
+      navLinks.classList.remove('justify-end');
+    }
   });
+  
+  // Update active nav link based on scroll position
+  window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.clientHeight;
+      const scrollPosition = window.scrollY;
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        const sectionId = section.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}` || link.getAttribute('href').endsWith(`#${sectionId}`)) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  });
+  
+  // Call reveal animations
+  revealOnScroll();
 });

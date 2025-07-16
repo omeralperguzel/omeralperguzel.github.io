@@ -22,11 +22,15 @@
         theme: {
           extend: {
             colors: {
-              primary: '#EF476F',
-              secondary: '#FFD166',
-              accent: '#06D6A0',
-              info: '#118AB2',
-              dark: '#073B4C',
+              primary: '#3182CE',    // Professional blue
+              secondary: '#4A5568',  // Slate gray
+              accent: '#38B2AC',     // Muted teal
+              info: '#63B3ED',       // Light blue
+              dark: '#1A202C',       // Deep blue-gray
+              gray: {
+                light: '#E2E8F0',    // Light gray for borders
+                medium: '#A0AEC0',   // Medium gray for text
+              }
             },
             fontFamily: {
               sans: ['Montserrat', 'sans-serif'],
@@ -48,7 +52,7 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
+<body class="text-white">
     <!-- Page Loader -->
     <div id="pageLoader">
         <div class="spinner"></div>
@@ -82,6 +86,18 @@
               <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
               <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
               <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li>
+                <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <!-- Sun icon for dark mode (initially visible) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                  </svg>
+                  <!-- Moon icon for light mode (initially hidden) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
@@ -109,6 +125,18 @@
           <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
           <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
           <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li class="mt-4 flex justify-center">
+            <button id="mobileThemeToggle" class="flex items-center justify-center p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+              <!-- Sun icon for dark mode (initially visible) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+              </svg>
+              <!-- Moon icon for light mode (initially hidden) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -123,7 +151,8 @@
                 <span class="relative">Hakkımda</span>
               </span>
             </h2>
-            <div class="max-w-3xl mx-auto bg-dark/30 backdrop-blur-md rounded-xl p-8 shadow-lg">
+            <div class="max-w-5xl mx-auto bg-dark/30 backdrop-blur-md rounded-xl p-8 shadow-lg">
+              <!-- Increased from max-w-3xl to max-w-5xl to make it wider -->
               <p class="mb-4">
                 Ben temel olarak kodlama, tasarım ve çizim alanlarında çalışan bir Bilgisayar Mühendisliği öğrencisiyim. Yazılım projelerinde Unity, VS Code, React, Node.js ve Flutter gibi teknolojiler kullanıyorum. Tasarım ve çizim alanında ise Figma, Photoshop, Illustrator ve Clip Studio Paint kullanıyorum.
               </p>
@@ -271,6 +300,58 @@
           headerTitle.classList.remove('hidden');
           navLinks.classList.remove('justify-end');
         }
+      });
+      
+      // Simple page-specific theme content updater
+      function updateAboutPageThemeContent() {
+        // Get current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        console.log("Updating about page content for theme:", currentTheme);
+        
+        // Target all text elements in the about and resume sections
+        const textElements = document.querySelectorAll('.text-white, .text-center, h2, h3, p, .max-w-5xl p, .max-w-5xl h3, a:not(.text-accent)');
+        
+        // Target all background elements that need updating
+        const bgElements = document.querySelectorAll('.bg-dark\\/30, .bg-dark\\/20, .bg-dark\\/50');
+        
+        // Update text colors
+        textElements.forEach(element => {
+          if (currentTheme === 'light') {
+            element.style.color = 'var(--color-text)';
+          } else {
+            element.style.color = '';
+          }
+        });
+        
+        // Update background elements
+        bgElements.forEach(element => {
+          if (currentTheme === 'light') {
+            element.style.backgroundColor = 'var(--color-card-bg)';
+          } else {
+            element.style.backgroundColor = '';
+          }
+        });
+      }
+      
+      // Add event listener to the document to detect theme changes
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initial update based on current theme
+        updateAboutPageThemeContent();
+        
+        // Add a mutation observer to detect theme attribute changes
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+              updateAboutPageThemeContent();
+            }
+          });
+        });
+        
+        // Start observing document element for theme changes
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
       });
     </script>
 </body>

@@ -22,11 +22,15 @@
         theme: {
           extend: {
             colors: {
-              primary: '#EF476F',
-              secondary: '#FFD166',
-              accent: '#06D6A0',
-              info: '#118AB2',
-              dark: '#073B4C',
+              primary: '#3182CE',    // Professional blue
+              secondary: '#4A5568',  // Slate gray
+              accent: '#38B2AC',     // Muted teal
+              info: '#63B3ED',       // Light blue
+              dark: '#1A202C',       // Deep blue-gray
+              gray: {
+                light: '#E2E8F0',    // Light gray for borders
+                medium: '#A0AEC0',   // Medium gray for text
+              }
             },
             fontFamily: {
               sans: ['Montserrat', 'sans-serif'],
@@ -105,7 +109,7 @@
     </style>
   </head>
   
-  <body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
+  <body class="text-white">
     <!-- Page Loader -->
     <div id="pageLoader">
         <div class="spinner"></div>
@@ -227,7 +231,7 @@
                     <img src="homepage/icons8-illustrator.gif" alt="Draw Animated" class="animated-icon w-18 h-18 absolute top-0 left-0">
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-4xl font-semibold text-secondary mb-4">Çizim</h3>
+                    <h3 class="text-4xl font-semibold text-info mb-4">Çizim</h3>
                     <p class="text-left text-dark">Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.</p>
                   </div>
                 </div>

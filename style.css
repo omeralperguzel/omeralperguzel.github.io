@@ -2,6 +2,44 @@
  * Typography & Text styles
  */
 
+:root {
+  /* Dark theme (default) */
+  --color-primary: #3182CE;    /* Professional blue */
+  --color-secondary: #4A5568;  /* Slate gray */
+  --color-accent: #38B2AC;     /* Muted teal */
+  --color-info: #63B3ED;       /* Light blue */
+  --color-dark: #1A202C;       /* Deep blue-gray */
+  --color-gray-light: #E2E8F0; /* Light gray for borders */
+  --color-bg-gradient-start: #1A202C; /* Dark blue-gray */
+  --color-bg-gradient-end: #2D3748;   /* Medium blue-gray */
+  --color-text: #FFFFFF;       /* White text */
+  --color-text-secondary: #E2E8F0; /* Light gray text */
+  --color-card-bg: rgba(26, 32, 44, 0.3); /* Dark card background */
+  --color-header-bg: rgba(26, 32, 44, 0.8); /* Dark header background */
+  --color-scrollbar-track: #1A202C;
+  --color-scrollbar-thumb: #38B2AC;
+  --color-blockquote-bg: rgba(56, 178, 172, 0.1);
+}
+
+[data-theme="light"] {
+  /* Light theme */
+  --color-primary: #2C5282;    /* Darker blue for contrast */
+  --color-secondary: #4A5568;  /* Slate gray */
+  --color-accent: #319795;     /* Darker teal for contrast */
+  --color-info: #4299E1;       /* Darker light blue for contrast */
+  --color-dark: #2D3748;       /* Medium gray for contrast on light bg */
+  --color-gray-light: #CBD5E0; /* Light gray for borders in light mode */
+  --color-bg-gradient-start: #EDF2F7; /* Light gray */
+  --color-bg-gradient-end: #F7FAFC;   /* Very light gray */
+  --color-text: #1A202C;       /* Dark text */
+  --color-text-secondary: #4A5568; /* Secondary dark text */
+  --color-card-bg: rgba(226, 232, 240, 0.7); /* Light card background */
+  --color-header-bg: rgba(237, 242, 247, 0.8); /* Light header background */
+  --color-scrollbar-track: #E2E8F0;
+  --color-scrollbar-thumb: #319795;
+  --color-blockquote-bg: rgba(49, 151, 149, 0.1);
+}
+
 /* html is set to 62.5% so that all the REM measurements are based on 10px sizing. So basically 1.5rem = 15px */
 html {
   font-size: 62.5%;
@@ -13,9 +51,12 @@ body {
   line-height: 2.0;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;
-  color: #FFFFFF;
+  color: var(--color-text);
   overflow-x: hidden;
   background-attachment: fixed;
+  background-image: linear-gradient(to bottom right, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+  min-height: 100vh;
+  transition: color 0.3s ease, background-image 0.3s ease;
 }
 
 /* Custom scrollbar */
@@ -24,16 +65,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #073B4C;
+  background: var(--color-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #06D6A0;
+  background: var(--color-scrollbar-thumb);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #05a37c;
+  background: #2C9A94; /* Darker version of accent color when hovered */
 }
 
 /**
@@ -42,7 +83,7 @@ body {
 a {
   font-weight: normal;
   text-decoration: none; 
-  color: #e0cfcf;
+  color: var(--color-primary);
   transition: color 0.3s ease;
 }
 
@@ -94,12 +135,13 @@ q:after {
   content: close-quote;
 }
 
+/* Update blockquote styling */
 blockquote {
-  border-left: 2px solid #06D6A0;
+  border-left: 2px solid var(--color-accent);
   margin: 1.6em 10%;
   padding: .75em 1em;
   font-size: 1.8rem;
-  background-color: rgba(6, 214, 160, 0.1);
+  background-color: var(--color-blockquote-bg);
   border-radius: 0 8px 8px 0;
 }
 
@@ -118,21 +160,60 @@ blockquote p:last-child {
 }
 
 #cursor {
-	display: inline-block;
-	vertical-align: middle;
-	width: 3px;
-	height: 60px;
-	background-color: #06D6A0;
-	animation: blink .75s step-end infinite;
+  display: inline-block;
+  vertical-align: middle;
+  width: 3px;
+  height: 60px;
+  background-color: var(--color-accent);
+  animation: blink .75s step-end infinite;
 }
 
-@keyframes blink {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
+/* Theme toggle button */
+#themeToggle {
+  cursor: pointer;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+#themeToggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#themeToggle svg {
+  color: var(--color-text);
+  width: 20px;
+  height: 20px;
+}
+
+[data-theme="light"] .bg-dark\/30,
+[data-theme="light"] .bg-dark\/40,
+[data-theme="light"] .bg-dark\/50,
+[data-theme="light"] .bg-dark\/70,
+[data-theme="light"] .bg-dark\/80,
+[data-theme="light"] .bg-dark\/90,
+[data-theme="light"] .bg-dark\/95 {
+  background-color: var(--color-card-bg);
+}
+
+/* Update text colors for light mode */
+[data-theme="light"] .text-white {
+  color: var(--color-text);
+}
+
+[data-theme="light"] .text-gray-light {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="light"] header,
+[data-theme="light"] footer {
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(8px);
 }
 
 /* Content regions */
@@ -372,21 +453,21 @@ footer h3 {
   justify-content: flex-end;
 } */
 
-/* Tag category colors */
+/* Update tag category colors to more professional variants */
 .tag.project-type {
-  background-color: rgba(6, 214, 160, 0.9);
+  background-color: rgba(56, 178, 172, 0.9); /* Muted teal */
 }
 
 .tag.platform {
-  background-color: rgba(239, 71, 111, 0.9);
+  background-color: rgba(49, 130, 206, 0.9); /* Professional blue */
 }
 
 .tag.language {
-  background-color: rgba(255, 209, 102, 0.9);
+  background-color: rgba(74, 85, 104, 0.9); /* Slate gray */
 }
 
 .tag.technology {
-  background-color: rgba(17, 138, 178, 0.9);
+  background-color: rgba(99, 179, 237, 0.9); /* Light blue */
 }
 
 /* Added for better spacing in the bottom tag container */

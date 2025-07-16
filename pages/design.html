@@ -22,11 +22,15 @@
         theme: {
           extend: {
             colors: {
-              primary: '#EF476F',
-              secondary: '#FFD166',
-              accent: '#06D6A0',
-              info: '#118AB2',
-              dark: '#073B4C',
+              primary: '#3182CE',    // Professional blue
+              secondary: '#4A5568',  // Slate gray
+              accent: '#38B2AC',     // Muted teal
+              info: '#63B3ED',       // Light blue
+              dark: '#1A202C',       // Deep blue-gray
+              gray: {
+                light: '#E2E8F0',    // Light gray for borders
+                medium: '#A0AEC0',   // Medium gray for text
+              }
             },
             fontFamily: {
               sans: ['Montserrat', 'sans-serif'],
@@ -52,7 +56,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-dark to-info min-h-screen text-white">
+<body class="text-white">
     <!-- Page Loader -->
     <div id="pageLoader">
         <div class="spinner"></div>
@@ -86,6 +90,18 @@
               <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
               <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
               <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li>
+                <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <!-- Sun icon for dark mode (initially visible) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sun-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                  </svg>
+                  <!-- Moon icon for light mode (initially hidden) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 moon-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
