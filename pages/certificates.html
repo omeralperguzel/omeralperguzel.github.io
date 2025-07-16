@@ -131,6 +131,52 @@
               Burada kronolojik bir sıralama göstermektense sertifikaları ve eğitimleri kendimce sıralamayı ve gruplamayı tercih ettim.
             </p>
 
+            <!-- Tag Filter System -->
+            <div class="mb-12">
+              <!-- Grouped and categorized filter buttons -->
+              <div class="flex flex-col items-center gap-4 mb-6">
+                <!-- "All" button stands alone -->
+                <div>
+                  <button class="tag-filter active px-4 py-2 rounded-full bg-dark/70 hover:bg-dark text-white text-base transition-colors duration-300 font-medium" data-tag="all">Tümü</button>
+                </div>
+                
+                <!-- Filter groups -->
+                <div class="flex flex-wrap justify-center gap-6">
+                  <!-- Time Period Group - Info Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-info">Dönem</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-info/30 hover:bg-info text-info hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="2024-2025">2024-2025</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-info/30 hover:bg-info text-info hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="2022-2023">2022-2023</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-info/30 hover:bg-info text-info hover:text-white text-sm transition-colors duration-300 font-medium" data-tag="2021-earlier">2021 ve Öncesi</button>
+                    </div>
+                  </div>
+                  
+                  <!-- Certificate Type Group - Accent Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-accent">Sertifika Tipi</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-accent/30 hover:bg-accent text-accent hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="course">Kurs</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-accent/30 hover:bg-accent text-accent hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="event">Etkinlik</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-accent/30 hover:bg-accent text-accent hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="hackathon">Hackathon</button>
+                    </div>
+                  </div>
+                  
+                  <!-- Industry Sector Group - Secondary Color -->
+                  <div class="filter-group">
+                    <div class="text-center mb-2 text-sm font-medium text-secondary">Sektör/Alan</div>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="programming">Programlama</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="ai-ml">Yapay Zeka</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="design">Tasarım</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="cybersecurity">Siber Güvenlik</button>
+                      <button class="tag-filter px-3 py-1 rounded-full bg-secondary/30 hover:bg-secondary text-secondary hover:text-dark text-sm transition-colors duration-300 font-medium" data-tag="art">Çizim/Sanat</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <!-- Coursera IBM Category -->
             <div data-aos="fade-up" class="space-y-16">
               <div>
@@ -138,7 +184,7 @@
                 <p class="mb-8">2024 yaz tatilinde Coursera ve üniversitemizin anlaşması kapsamında aldığım IBM AI Engineering Coursera kurslarıdır. Bazı ödevlerini yetiştiremediğim için ödev sonrası sertifikalar üniversite sponsorluğunun dışında olacak.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2024-2025 course ai-ml programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/ibmlogo1.png" alt="IBM" class="certificate-logo">
@@ -151,7 +197,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2024-2025 course ai-ml programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/ibmlogo1.png" alt="IBM" class="certificate-logo">
@@ -172,8 +218,8 @@
               <p class="mb-8">Katıldığım konferans, etkinlik ve hackathon'larda aldığım katılım sertifikaları.</p>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- IEEE SIU Conference Certificate - Make it clickable with certificate image -->
-                <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ieeesiu.png', '33. IEEE Sinyal İşleme ve İletişim Uygulamaları Kurultayı')">
+                <!-- IEEE SIU Conference Certificate -->
+                <div data-tags="2024-2025 event programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ieeesiu.png', '33. IEEE Sinyal İşleme ve İletişim Uygulamaları Kurultayı')">
                   <div class="flex flex-col md:flex-row">
                     <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                       <img src="../certificates/isikunilogo1.png" alt="Işık Üniversitesi" class="certificate-logo">
@@ -195,8 +241,8 @@
                   </div>
                 </div>
                 
-                <!-- Istanbul Transportation Hackathon Certificate - Make it clickable with certificate image -->
-                <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ietthackathon.png', 'İstanbul\'un Toplu Ulaşımında Akılcı Çözümler Hackathonu')">
+                <!-- Istanbul Transportation Hackathon Certificate -->
+                <div data-tags="2024-2025 hackathon programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-pointer" onclick="openCertificateModal('../certificates/cert-ietthackathon.png', 'İstanbul\'un Toplu Ulaşımında Akılcı Çözümler Hackathonu')">
                   <div class="flex flex-col md:flex-row">
                     <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                       <img src="../certificates/ibbbilgiislemlogo1.png" alt="İBB Bilgi İşlem" class="certificate-logo">
@@ -227,7 +273,7 @@
                 <p class="mb-8">Bu programa okulumu dahil edebilmek için kariyer merkezine bizzat e-posta gönderdim. Vaktinde göndermem vesilesiyle üniversitemiz bu programa dahil olan ilk 5 üniversite arasına girdi.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="certificate-logo">
@@ -240,7 +286,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course programming" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/patikadevlogo1.png" alt="Patika.dev" class="certificate-logo">
@@ -261,7 +307,7 @@
                 <p class="mb-8">2023 ara tatilinde Coursera ve üniversitemizin anlaşması kapsamında aldığım Coursera kurslarıdır. Bazı ödevlerini yetiştiremediğim için ödev sonrası sertifikalar üniversite sponsorluğunun dışında olacak.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course design" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/calartslogo1.png" alt="CalArts" class="certificate-logo">
@@ -274,7 +320,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course design" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/calartslogo1.png" alt="CalArts" class="certificate-logo">
@@ -295,7 +341,7 @@
                 <p class="mb-8">Yapay zeka üzerine de yoğunlaşmak istediğim için Python öğrenme konusunda alacak daha yolum olsa da bu yolda aşağıdaki sertifikaları aldım.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course programming ai-ml" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/kagglelogo1.png" alt="Kaggle" class="certificate-logo">
@@ -308,7 +354,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                  <div data-tags="2022-2023 course programming ai-ml" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300">
                     <div class="flex flex-col md:flex-row">
                       <div class="md:w-1/3 p-6 flex items-center justify-center bg-dark/50 h-full">
                         <img src="../certificates/datacamplogo1.png" alt="DataCamp" class="certificate-logo">
@@ -329,7 +375,7 @@
                 <p class="mb-8">Bu programa Siber Güvenlik 101 adlı 2 günlük programın ardından başvurup kabul edilen 2000 kişinin arasında oldum. Bu 6 aylık programın ilk 3 ayında aktif olarak katılırken diğer 3 ayına katılamadım.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course cybersecurity" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/ciscologo1.png" alt="Cisco" class="w-24 h-24 object-contain">
@@ -342,7 +388,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course cybersecurity" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/ciscologo1.png" alt="Cisco" class="w-24 h-24 object-contain">
@@ -355,7 +401,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course cybersecurity" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/ciscologo1.png" alt="Cisco" class="w-24 h-24 object-contain">
@@ -376,7 +422,7 @@
                 <p class="mb-8">Graphixly'nin 2 saat süren Clip Studio Paint sertifikaları. Dijital çizimde araç kullanımında daha iyi hâle gelebilmek için aldığım bazı eğitimleri içeriyor.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course art" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/graphixlylogo1.jpg" alt="Graphixly" class="w-24 h-24 object-contain">
@@ -389,7 +435,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course art" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/graphixlylogo1.jpg" alt="Graphixly" class="w-24 h-24 object-contain">
@@ -402,7 +448,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div data-tags="2021-earlier course art" class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/graphixlylogo1.jpg" alt="Graphixly" class="w-24 h-24 object-contain">
@@ -423,7 +469,7 @@
                 <p class="mb-8">Akbank Gençlik Akademisi'nin genelde 2 gün süren programları. Bu kapsamda ilgimi çeken eğitimlere girmeye çalıştım. Ayrıca Siber Güvenlik 101 kursu yoluyla Siber Güvenlik Analisti eğitiminden de yararlanma imkanı buldum.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course cybersecurity">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/akbanklogo1.png" alt="Akbank" class="w-24 h-24 object-contain">
@@ -436,7 +482,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course ai-ml">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/akbanklogo1.png" alt="Akbank" class="w-24 h-24 object-contain">
@@ -449,7 +495,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course entrepreneurship">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/akbanklogo1.png" alt="Akbank" class="w-24 h-24 object-contain">
@@ -470,7 +516,7 @@
                 <p class="mb-8">Bunları ayrıca bir gruba sokmak istemedim. Üstelik bu sertifikalar burada genellikle aldığım sertifikaların tek bir yerde durmasını istediğimden dolayı burada duruyorlar.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course programming">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/googledsclogo1.png" alt="Google" class="w-24 h-24 object-contain">
@@ -483,7 +529,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course ai-ml">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="https://media.licdn.com/dms/image/C4E0BAQEJ-KqJ2cHWYg/company-logo_200_200/0/1613066036213?e=1685577600&v=beta&t=bDp_3xPZyRlL4icIBbwfk8adsEMQm7DPVWvMyJQkWRM" alt="Global AI Hub" class="w-24 h-24 object-contain">
@@ -496,7 +542,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course law">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="../certificates/cfecertlogo1.png" alt="CFE" class="w-24 h-24 object-contain">
@@ -509,7 +555,7 @@
                     </div>
                   </div>
                   
-                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full">
+                  <div class="bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 transition-all duration-300 h-full" data-tags="2021-earlier course aviation">
                     <div class="flex flex-col h-full">
                       <div class="p-6 flex items-center justify-center bg-dark/50">
                         <img src="https://media.licdn.com/dms/image/C4D0BAQHjXKSaVHObvA/company-logo_200_200/0/1519951073603?e=1685577600&v=beta&t=97rBqkXBCk9hhfAHexwPMrXNqayr9BfTLIAxZmMfSC0" alt="SHGM" class="w-24 h-24 object-contain">
@@ -647,6 +693,159 @@
           modal.classList.add('hidden');
           document.body.style.overflow = '';
         }
+      });
+    </script>
+    
+    <!-- Tag Filtering Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get all filter buttons and certificate cards
+        const filterButtons = document.querySelectorAll('.tag-filter');
+        const certificateCards = document.querySelectorAll('[data-tags]');
+        
+        // Get the "All" button
+        const allButton = document.querySelector('.tag-filter[data-tag="all"]');
+        
+        // Find all category sections
+        const categoryContainers = document.querySelectorAll('.space-y-16 > div, [data-aos="fade-up"]');
+        
+        // Add data-category attributes to all category sections
+        categoryContainers.forEach((category, index) => {
+          category.setAttribute('data-category', `category-${index}`);
+          
+          // Find the heading and description elements
+          const heading = category.querySelector('h3');
+          const description = category.querySelector('p:nth-of-type(1)');
+          
+          if (heading) heading.setAttribute('data-category-element', 'heading');
+          if (description) description.setAttribute('data-category-element', 'description');
+        });
+        
+        // Track currently active tag
+        let currentActiveTag = 'all';
+        
+        // Filter certificates function
+        function filterCertificates(selectedTag) {
+          // First, handle certificate visibility
+          certificateCards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags').split(' ');
+            
+            if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
+              card.classList.remove('hidden');
+              card.style.transform = 'translateY(0)';
+              card.style.opacity = '1';
+            } else {
+              card.classList.add('hidden');
+              card.style.transform = 'translateY(20px)';
+              card.style.opacity = '0';
+            }
+          });
+          
+          // Then handle category visibility
+          if (selectedTag === 'all') {
+            // Show all category headings and descriptions at full size
+            document.querySelectorAll('[data-category-element]').forEach(el => {
+              el.style.display = '';
+              el.style.opacity = '1';
+              el.style.fontSize = '';
+              el.style.marginBottom = '';
+            });
+            
+            // Show all categories
+            categoryContainers.forEach(category => {
+              category.style.display = '';
+              category.style.marginBottom = '';
+            });
+          } else {
+            // For each category, check if it has any visible certificates
+            categoryContainers.forEach(category => {
+              // Find certificates within this category that match the filter
+              const cardsInCategory = Array.from(category.querySelectorAll('[data-tags]'));
+              const hasVisibleCards = cardsInCategory.some(card => {
+                const cardTags = card.getAttribute('data-tags').split(' ');
+                return cardTags.includes(selectedTag);
+              });
+              
+              if (hasVisibleCards) {
+                // This category has visible certificates, collapse the heading/description
+                category.style.display = 'block';
+                category.style.marginBottom = '2rem';
+                
+                const heading = category.querySelector('[data-category-element="heading"]');
+                const description = category.querySelector('[data-category-element="description"]');
+                
+                if (heading) {
+                  heading.style.display = 'block';
+                  heading.style.opacity = '0.7';
+                  heading.style.fontSize = '1.25rem';
+                  heading.style.marginBottom = '0.5rem';
+                }
+                
+                if (description) {
+                  description.style.display = 'block';
+                  description.style.opacity = '0.6';
+                  description.style.fontSize = '0.875rem';
+                  description.style.marginBottom = '1rem';
+                }
+              } else {
+                // No visible certificates in this category, hide it completely
+                category.style.display = 'none';
+              }
+            });
+          }
+        }
+        
+        // Click event for filter buttons
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const selectedTag = this.getAttribute('data-tag');
+            
+            // Check if clicking the same button again (toggle functionality)
+            if (currentActiveTag === selectedTag && selectedTag !== 'all') {
+              // If same button clicked, deactivate it and activate "All" button
+              filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-info', 'bg-secondary', 'bg-dark'));
+              allButton.classList.add('active', 'bg-dark');
+              currentActiveTag = 'all';
+              
+              // Show all certificates
+              filterCertificates('all');
+              return;
+            }
+            
+            // Update current active tag
+            currentActiveTag = selectedTag;
+            
+            // Toggle active class on buttons
+            filterButtons.forEach(btn => btn.classList.remove('active', 'bg-accent', 'bg-info', 'bg-secondary', 'bg-dark'));
+            this.classList.add('active');
+            
+            // Add special styling based on button group
+            if (this.getAttribute('data-tag') === 'all') {
+              this.classList.add('bg-dark');
+            } else if (this.closest('.filter-group').querySelector('.text-accent')) {
+              this.classList.add('bg-accent');
+            } else if (this.closest('.filter-group').querySelector('.text-info')) {
+              this.classList.add('bg-info');
+            } else if (this.closest('.filter-group').querySelector('.text-secondary')) {
+              this.classList.add('bg-secondary');
+            }
+            
+            // Filter certificates
+            filterCertificates(selectedTag);
+          });
+        });
+        
+        // Add some CSS for transitions
+        const style = document.createElement('style');
+        style.textContent = `
+          [data-category-element], [data-category] {
+            transition: all 0.4s ease-in-out;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Initial load - show all certificates
+        filterCertificates('all');
       });
     </script>
 </body>
