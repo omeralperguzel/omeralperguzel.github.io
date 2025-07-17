@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" data-language="tr">
   <head>
     <!-- Page setup -->
     <meta charset="utf-8">
@@ -55,6 +55,9 @@
     <!-- GLightbox for Image Viewer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    
+    <!-- Add language utils script -->
+    <script src="js/language-utils.js"></script>
     
     <style>
       .section-fade {
@@ -150,12 +153,19 @@
           <!-- Desktop Navigation -->
           <nav id="desktopNav" class="hidden md:block">
             <ul class="flex space-x-6 nav-links">
-              <li><a href="index.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-              <li><a href="pages/about.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Hakkımda</a></li>
-              <li><a href="pages/codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-              <li><a href="pages/design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-              <li><a href="pages/drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-              <li><a href="pages/certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li><a href="index.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+              <li><a href="pages/about.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-about">Hakkımda</a></li>
+              <li><a href="pages/codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-coding">Yazılım</a></li>
+              <li><a href="pages/design.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+              <li><a href="pages/drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+              <li><a href="pages/certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+              <li>
+                <button id="languageToggle" class="language-toggle ml-2 flex items-center justify-center rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <span class="current-lang">TR</span>
+                  <span class="mx-1">/</span>
+                  <span class="other-lang text-gray-medium">EN</span>
+                </button>
+              </li>
               <li>
                 <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
                   <!-- Sun icon for dark mode (initially visible) -->
@@ -189,12 +199,20 @@
           <img src="logo2.png" alt="Logo" class="w-16 h-24"> <!-- Updated to 2:3 ratio -->
         </div>
         <ul class="space-y-4">
-          <li><a href="index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-          <li><a href="pages/about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Hakkımda</a></li>
-          <li><a href="pages/codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-          <li><a href="pages/design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-          <li><a href="pages/drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-          <li><a href="pages/certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li><a href="index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+          <li><a href="pages/about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-about">Hakkımda</a></li>
+          <li><a href="pages/codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-coding">Yazılım</a></li>
+          <li><a href="pages/design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+          <li><a href="pages/drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+          <li><a href="pages/certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+          <!-- Language toggle for mobile -->
+          <li class="mt-4">
+            <button id="mobileLanguageToggle" class="language-toggle flex items-center py-2 text-white hover:text-accent transition-colors duration-300">
+              <span class="current-lang">TR</span>
+              <span class="mx-1">/</span>
+              <span class="other-lang text-gray-medium">EN</span>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -207,7 +225,7 @@
           <!-- Hero Section with typing animation -->
           <div class="text-center mb-16">
             <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-              <span class="block font-mono mb-2">Adım Ömer Alper</span>
+              <span class="block font-mono mb-2 lang-my-name">Adım Ömer Alper</span>
             </h1>
             <div id="typingContainer" class="min-h-[3.5rem] mb-8 flex justify-center items-center">
               <span id="text" class="text-4xl lg:text-5xl font-mono"></span>
@@ -226,8 +244,8 @@
                     <img src="homepage/icons8-code.gif" alt="Code Animated" class="animated-icon w-18 h-18 absolute top-0 left-0">
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-4xl font-semibold text-accent mb-4">Kodlama</h3>
-                    <p class="text-left text-dark">Kodlarken Java kullanıyorum. Diğer yandan C# ve Python öğreniyorum. Oyun geliştirme ve yapay zekaya ilgim var.</p>
+                    <h3 class="text-4xl font-semibold text-accent mb-4 lang-coding-title">Kodlama</h3>
+                    <p class="text-left text-dark lang-coding-desc">Kodlarken Java kullanıyorum. Diğer yandan C# ve Python öğreniyorum. Oyun geliştirme ve yapay zekaya ilgim var.</p>
                   </div>
                 </div>
               </a>
@@ -242,8 +260,8 @@
                     <img src="homepage/icons8-design.gif" alt="Design Animated" class="animated-icon w-18 h-18 absolute top-0 left-0">
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-4xl font-semibold text-primary mb-4">Tasarım</h3>
-                    <p class="text-left text-dark">Figma, Photoshop, Illustrator kullanıyorum. Arayüz tasarımı, afiş tasarımı ve başka pek çok şeyle ilgileniyorum.</p>
+                    <h3 class="text-4xl font-semibold text-primary mb-4 lang-design-title">Tasarım</h3>
+                    <p class="text-left text-dark lang-design-desc">Figma, Photoshop, Illustrator kullanıyorum. Arayüz tasarımı, afiş tasarımı ve başka pek çok şeyle ilgileniyorum.</p>
                   </div>
                 </div>
               </a>
@@ -258,8 +276,8 @@
                     <img src="homepage/icons8-illustrator.gif" alt="Draw Animated" class="animated-icon w-18 h-18 absolute top-0 left-0">
                   </div>
                   <div class="mt-4">
-                    <h3 class="text-4xl font-semibold text-info mb-4">Çizim</h3>
-                    <p class="text-left text-dark">Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.</p>
+                    <h3 class="text-4xl font-semibold text-info mb-4 lang-drawing-title">Çizim</h3>
+                    <p class="text-left text-dark lang-drawing-desc">Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.</p>
                   </div>
                 </div>
               </a>
@@ -311,6 +329,57 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
+      // Define page-specific translations
+      const pageTranslations = {
+        tr: {
+          'lang-my-name': 'Adım Ömer Alper',
+          'lang-coding-title': 'Kodlama',
+          'lang-coding-desc': 'Kodlarken Java kullanıyorum. Diğer yandan C# ve Python öğreniyorum. Oyun geliştirme ve yapay zekaya ilgim var.',
+          'lang-design-title': 'Tasarım',
+          'lang-design-desc': 'Figma, Photoshop, Illustrator kullanıyorum. Arayüz tasarımı, afiş tasarımı ve başka pek çok şeyle ilgileniyorum.',
+          'lang-drawing-title': 'Çizim',
+          'lang-drawing-desc': 'Dijital çizimde Clip Studio Paint ve Procreate kullanıyorum. Daha çok line-art yapıyorum ve kendimi anatomide geliştirmek istiyorum.'
+        },
+        en: {
+          'lang-my-name': 'My name is Ömer Alper',
+          'lang-coding-title': 'Coding',
+          'lang-coding-desc': 'I use Java for coding. On the other hand, I\'m learning C# and Python. I\'m interested in game development and artificial intelligence.',
+          'lang-design-title': 'Design',
+          'lang-design-desc': 'I use Figma, Photoshop, and Illustrator. I\'m interested in UI design, poster design, and many other things.',
+          'lang-drawing-title': 'Drawing',
+          'lang-drawing-desc': 'In digital drawing, I use Clip Studio Paint and Procreate. I mostly do line art and want to improve myself in anatomy.'
+        }
+      };
+      
+      // Set up typing animation texts for both languages
+      window.typingAnimationTexts = {
+        tr: [
+          "Ben kodluyorum",
+          "Ben tasarlıyorum",
+          "Ben çiziyorum"
+        ],
+        en: [
+          "I'm coding",
+          "I'm designing",
+          "I'm drawing"
+        ]
+      };
+      
+      // Initialize typing animation when document is ready
+      document.addEventListener('DOMContentLoaded', function() {
+        const textElement = document.getElementById('text');
+        if (textElement) {
+          const currentLanguage = document.documentElement.getAttribute('data-language') || 'tr';
+          window.typingAnimation = new TypingAnimation(
+            textElement, 
+            window.typingAnimationTexts[currentLanguage],
+            300,  // Increased from 100 - slower typing speed
+            150,  // Increased from 50 - slower deletion speed
+            3000  // Increased from 1000 - longer pause between phrases
+          );
+        }
+      });
+
       // Page loader
       window.addEventListener('load', function() {
         setTimeout(function() {

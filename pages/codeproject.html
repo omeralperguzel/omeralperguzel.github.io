@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-language="tr">
 <head>
     <!-- Page setup -->
     <meta charset="utf-8">
@@ -236,6 +236,9 @@
     <!-- GLightbox for Image Viewer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Add language utils script -->
+    <script src="../js/language-utils.js"></script>
 </head>
 <body class="text-white">
     <!-- Page Loader -->
@@ -265,12 +268,19 @@
           <!-- Desktop Navigation -->
           <nav id="desktopNav" class="hidden md:block">
             <ul class="flex space-x-6 nav-links">
-              <li><a href="../index.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-              <li><a href="about.html" class="nav-link text-white hover:text-accent transition-colors duration-300 active">Hakkımda</a></li>
-              <li><a href="codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-              <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-              <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-              <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li><a href="../index.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+              <li><a href="about.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-about">Hakkımda</a></li>
+              <li><a href="codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300 active lang-coding">Yazılım</a></li>
+              <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+              <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+              <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+              <li>
+                <button id="languageToggle" class="language-toggle ml-2 flex items-center justify-center rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <span class="current-lang">TR</span>
+                  <span class="mx-1">/</span>
+                  <span class="other-lang text-gray-medium">EN</span>
+                </button>
+              </li>
               <li>
                 <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
                   <!-- Sun icon for dark mode (initially visible) -->
@@ -304,12 +314,20 @@
           <img src="../logo2.png" alt="Logo" class="w-16 h-24"> <!-- Updated to 2:3 ratio -->
         </div>
         <ul class="space-y-4">
-          <li><a href="../index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-          <li><a href="about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Hakkımda</a></li>
-          <li><a href="codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-          <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-          <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-          <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li><a href="../index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+          <li><a href="about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-about">Hakkımda</a></li>
+          <li><a href="codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-coding">Yazılım</a></li>
+          <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+          <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+          <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+          <!-- Language toggle for mobile -->
+          <li class="mt-4">
+            <button id="mobileLanguageToggle" class="language-toggle flex items-center py-2 text-white hover:text-accent transition-colors duration-300">
+              <span class="current-lang">TR</span>
+              <span class="mx-1">/</span>
+              <span class="other-lang text-gray-medium">EN</span>
+            </button>
+          </li>
           <li class="mt-4 flex justify-center">
             <button id="mobileThemeToggle" class="flex items-center justify-center p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
               <!-- Sun icon for dark mode (initially visible) -->
@@ -325,17 +343,17 @@
         </ul>
       </div>
     </nav>
-
+    
     <main class="pt-24">
         <section id="codeproject" class="py-24 content-region">
           <div class="container mx-auto px-6">
             <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
               <span class="relative inline-block">
                 <span class="absolute inset-x-0 bottom-0 h-2 bg-primary/30"></span>
-                <span class="relative">Yazılım Projeleri</span>
+                <span class="relative lang-projects-title">Yazılım Projeleri</span>
               </span>
             </h2>
-            <p class="text-center max-w-2xl mx-auto mb-12">
+            <p class="text-center max-w-2xl mx-auto mb-12 lang-projects-intro">
               Burada daha önce yaptığım veya hâlâ yapıyor olduğum projeler bulunuyor. Buraya arayüz tasarımını yapıp kodunu yazmadığım projeler dahil etmedim.
             </p>
             
@@ -999,8 +1017,20 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="../script.js"></script>
+       <script src="../script.js"></script>
     <script>
+      // Define page-specific translations
+      const pageTranslations = {
+        tr: {
+          'lang-projects-title': 'Yazılım Projeleri',
+          'lang-projects-intro': 'Burada daha önce yaptığım veya hâlâ yapıyor olduğum projeler bulunuyor. Buraya arayüz tasarımını yapıp kodunu yazmadığım projeler dahil etmedim.'
+        },
+        en: {
+          'lang-projects-title': 'Software Projects',
+          'lang-projects-intro': 'Here are the projects I\'ve worked on before or am still working on. I did not include projects where I only designed the UI but didn\'t code them.'
+        }
+      };
+      
       // Initialize GLightbox
       const lightbox = GLightbox({
         touchNavigation: true,

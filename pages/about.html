@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-language="tr">
 <head>
     <!-- Page setup -->
     <meta charset="utf-8">
@@ -51,6 +51,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Add language utils script -->
+    <script src="../js/language-utils.js"></script>
 </head>
 <body class="text-white">
     <!-- Page Loader -->
@@ -80,12 +83,19 @@
           <!-- Desktop Navigation -->
           <nav id="desktopNav" class="hidden md:block">
             <ul class="flex space-x-6 nav-links">
-              <li><a href="../index.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-              <li><a href="about.html" class="nav-link text-white hover:text-accent transition-colors duration-300 active">Hakkımda</a></li>
-              <li><a href="codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-              <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-              <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-              <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+              <li><a href="../index.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+              <li><a href="about.html" class="nav-link text-white hover:text-accent transition-colors duration-300 active lang-about">Hakkımda</a></li>
+              <li><a href="codeproject.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-coding">Yazılım</a></li>
+              <li><a href="design.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+              <li><a href="drawing.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+              <li><a href="certificates.html" class="nav-link text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+              <li>
+                <button id="languageToggle" class="language-toggle ml-2 flex items-center justify-center rounded-full hover:bg-dark/30 transition-colors duration-300">
+                  <span class="current-lang">TR</span>
+                  <span class="mx-1">/</span>
+                  <span class="other-lang text-gray-medium">EN</span>
+                </button>
+              </li>
               <li>
                 <button id="themeToggle" class="flex items-center justify-center ml-2 p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
                   <!-- Sun icon for dark mode (initially visible) -->
@@ -119,12 +129,20 @@
           <img src="../logo2.png" alt="Logo" class="w-16 h-24"> <!-- Updated to 2:3 ratio -->
         </div>
         <ul class="space-y-4">
-          <li><a href="../index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Ana Sayfa</a></li>
-          <li><a href="about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Hakkımda</a></li>
-          <li><a href="codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Yazılım</a></li>
-          <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Tasarım</a></li>
-          <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Çizim</a></li>
-          <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300">Sertifikalar</a></li>
+          <li><a href="../index.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-home">Ana Sayfa</a></li>
+          <li><a href="about.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-about">Hakkımda</a></li>
+          <li><a href="codeproject.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-coding">Yazılım</a></li>
+          <li><a href="design.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-design">Tasarım</a></li>
+          <li><a href="drawing.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-drawing">Çizim</a></li>
+          <li><a href="certificates.html" class="block py-2 text-white hover:text-accent transition-colors duration-300 lang-certificates">Sertifikalar</a></li>
+          <!-- Language toggle for mobile -->
+          <li class="mt-4">
+            <button id="mobileLanguageToggle" class="language-toggle flex items-center py-2 text-white hover:text-accent transition-colors duration-300">
+              <span class="current-lang">TR</span>
+              <span class="mx-1">/</span>
+              <span class="other-lang text-gray-medium">EN</span>
+            </button>
+          </li>
           <li class="mt-4 flex justify-center">
             <button id="mobileThemeToggle" class="flex items-center justify-center p-2 rounded-full hover:bg-dark/30 transition-colors duration-300">
               <!-- Sun icon for dark mode (initially visible) -->
@@ -148,35 +166,35 @@
             <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
               <span class="relative inline-block">
                 <span class="absolute inset-x-0 bottom-0 h-2 bg-accent/30"></span>
-                <span class="relative">Hakkımda</span>
+                <span class="relative lang-about-title">Hakkımda</span>
               </span>
             </h2>
             <div class="max-w-5xl mx-auto bg-dark/30 backdrop-blur-md rounded-xl p-8 shadow-lg">
               <!-- Increased from max-w-3xl to max-w-5xl to make it wider -->
-              <p class="mb-4">
+              <p class="mb-4 lang-about-intro">
                 Ben temel olarak kodlama, tasarım ve çizim alanlarında çalışan bir Bilgisayar Mühendisliği öğrencisiyim. Yazılım projelerinde Unity, VS Code, React, Node.js ve Flutter gibi teknolojiler kullanıyorum. Tasarım ve çizim alanında ise Figma, Photoshop, Illustrator ve Clip Studio Paint kullanıyorum.
               </p>
               
-              <h3 class="text-xl font-bold text-accent mb-2 mt-6">Eğitim</h3>
-              <p class="mb-4">
+              <h3 class="text-xl font-bold text-accent mb-2 mt-6 lang-education-title">Eğitim</h3>
+              <p class="mb-4 lang-education-text">
                 TED Üniversitesi'nde 2.98 AGNO ile Bilgisayar Mühendisliği lisans eğitimime devam ediyorum ve 4.00 AGNO ile Uluslararası İlişkiler yan dal programını tamamladım. Aynı zamanda İstanbul Üniversitesi'nde 3.08 AGNO ile Grafik Tasarım ön lisans programını 2022-2024 yılları arasında onur öğrencisi olarak tamamladım.
               </p>
               
-              <h3 class="text-xl font-bold text-accent mb-2 mt-6">İş Deneyimi</h3>
-              <p class="mb-4">
+              <h3 class="text-xl font-bold text-accent mb-2 mt-6 lang-experience-title">İş Deneyimi</h3>
+              <p class="mb-4 lang-experience-text">
                 Şu anda Mita Corporation'da stajyer olarak React ve Node.js kullanarak bir internet radyo uygulaması geliştiriyor ve Tokyo Game Show 2024 için kitapçık ve video hazırlıyorum. Öncesinde Devri Robotik'te scooter kiralama uygulaması için bir GitHub projesi oluşturdum ve yapay zeka alışveriş öneri algoritması üzerinde çalıştım. TED Üniversitesi'nde TEDU App projesinde çalışan öğrenci olarak Flutter ile ön-uç geliştirme yaptım. Biriktir'de staj kapsamında bir sosyal girişimcilik şirketi için Figma kullanarak kullanıcı arayüzleri ve oyun mekaniği tasarladım.
               </p>
               
-              <h3 class="text-xl font-bold text-accent mb-2 mt-6">Öğrenci Toplulukları</h3>
-              <p class="mb-4">
+              <h3 class="text-xl font-bold text-accent mb-2 mt-6 lang-clubs-title">Öğrenci Toplulukları</h3>
+              <p class="mb-4 lang-clubs-text">
                 ALECTED ekibinde 2024'ten beri takım kaptanı, 2022-2024 arasında Medya Takımı kaptanı ve 2023'ten beri Yazılım Takımı üyesi olarak çalışıyorum. Takımda Shell Eco-Marathon 2023 Fransa'ya katılan ilk prototip aracın yapımında katkıda bulundum. Ayrıca Uzak Doğu Kültür Topluluğu'nun kurucu üyesi ve 2022-2023 yılları arasında Denetleme Kurulu'nun kurucu başkanı olarak görev aldım.
               </p>
               
-              <p class="mb-4">
+              <p class="mb-4 lang-programming-text">
                 Programlamada ağırlıklı olarak Java, JavaScript ve C kullanıyorum, aynı zamanda C#, Python, React, Node.js ve Flutter öğreniyor ve kullanıyorum. Oyun geliştirme, mobil uygulama geliştirme ve yapay zeka alanlarında kendimi geliştirmeye devam ediyorum.
               </p>
               
-              <p>
+              <p class="lang-interests-text">
                 Tüm bunların yanında tarih ve kültür konularıyla ilgilenmeyi seviyorum.
               </p>
             </div>
@@ -189,26 +207,26 @@
             <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
               <span class="relative inline-block">
                 <span class="absolute inset-x-0 bottom-0 h-2 bg-accent/30"></span>
-                <span class="relative">Özgeçmişim</span>
+                <span class="relative lang-resume-title">Özgeçmişim</span>
               </span>
             </h2>
             
             <div class="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
               <!-- PDF Links -->
               <div class="w-full md:w-1/3 bg-dark/30 backdrop-blur-md rounded-xl p-6 shadow-lg">
-                <h3 class="text-xl font-bold text-accent mb-4">Özgeçmiş İndir</h3>
+                <h3 class="text-xl font-bold text-accent mb-4 lang-download-resume">Özgeçmiş İndir</h3>
                 <div class="space-y-4">
                   <a href="../about/OmerAlperGuzelResumeD.pdf" download class="flex items-center gap-2 p-3 bg-dark/50 hover:bg-dark/70 rounded-lg transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>İngilizce Detaylı CV (PDF)</span>
+                    <span class="lang-detailed-cv">İngilizce Detaylı CV (PDF)</span>
                   </a>
                   <a href="../about/OmerAlperGuzelResumeG.pdf" download class="flex items-center gap-2 p-3 bg-dark/50 hover:bg-dark/70 rounded-lg transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span>İngilizce Grafik CV (PDF)</span>
+                    <span class="lang-graphic-cv">İngilizce Grafik CV (PDF)</span>
                   </a>
                 </div>
               </div>
@@ -216,15 +234,15 @@
               <!-- PDF Viewer -->
               <div class="w-full md:w-2/3 bg-dark/30 backdrop-blur-md rounded-xl overflow-hidden shadow-lg h-[600px]">
                 <div class="bg-dark/50 text-white p-3 flex justify-between items-center">
-                  <span class="font-semibold">CV Önizleme</span>
-                  <a href="../about/OmerAlperGuzelResumeD.pdf" target="_blank" class="text-accent hover:text-white transition-colors duration-300">
+                  <span class="font-semibold lang-cv-preview">CV Önizleme</span>
+                  <a href="../about/OmerAlperGuzelResumeD.pdf" target="_blank" class="text-accent hover:text-white transition-colors duration-300 lang-open-new-tab">
                     Yeni Sekmede Aç
                   </a>
                 </div>
                 <object data="../about/OmerAlperGuzelResumeD.pdf" type="application/pdf" class="w-full h-[550px]">
                   <div class="flex flex-col items-center justify-center h-full p-6 text-center">
-                    <p class="mb-4">PDF görüntüleyici tarayıcınız tarafından desteklenmiyor.</p>
-                    <a href="../about/OmerAlperGuzelResumeD.pdf" download class="px-4 py-2 bg-accent text-dark rounded-lg hover:bg-accent/80 transition-colors duration-300">
+                    <p class="mb-4 lang-pdf-not-supported">PDF görüntüleyici tarayıcınız tarafından desteklenmiyor.</p>
+                    <a href="../about/OmerAlperGuzelResumeD.pdf" download class="px-4 py-2 bg-accent text-dark rounded-lg hover:bg-accent/80 transition-colors duration-300 lang-download-pdf">
                       PDF'i İndir
                     </a>
                   </div>
@@ -277,30 +295,49 @@
     <!-- Scripts -->
     <script src="../script.js"></script>
     <script>
-      // Navbar scroll effect with layout change
-      window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        const logoContainer = document.querySelector('.logo-container');
-        const headerLogo = document.querySelector('.header-logo');
-        const headerTitle = document.querySelector('.header-title');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (window.scrollY > 50) {
-          // Scrolled state
-          header.classList.add('py-2', 'shadow-lg');
-          logoContainer.classList.remove('mx-auto');
-          headerLogo.classList.remove('hidden'); // Show logo when scrolled
-          headerTitle.classList.add('hidden');
-          navLinks.classList.add('justify-end');
-        } else {
-          // Initial state
-          header.classList.remove('py-2', 'shadow-lg');
-          logoContainer.classList.add('mx-auto');
-          headerLogo.classList.add('hidden'); // Hide logo when at top
-          headerTitle.classList.remove('hidden');
-          navLinks.classList.remove('justify-end');
+      // Define page-specific translations
+      const pageTranslations = {
+        tr: {
+          'lang-about-title': 'Hakkımda',
+          'lang-about-intro': 'Ben temel olarak kodlama, tasarım ve çizim alanlarında çalışan bir Bilgisayar Mühendisliği öğrencisiyim. Yazılım projelerinde Unity, VS Code, React, Node.js ve Flutter gibi teknolojiler kullanıyorum. Tasarım ve çizim alanında ise Figma, Photoshop, Illustrator ve Clip Studio Paint kullanıyorum.',
+          'lang-education-title': 'Eğitim',
+          'lang-education-text': 'TED Üniversitesi\'nde 2.98 AGNO ile Bilgisayar Mühendisliği lisans eğitimime devam ediyorum ve 4.00 AGNO ile Uluslararası İlişkiler yan dal programını tamamladım. Aynı zamanda İstanbul Üniversitesi\'nde 3.08 AGNO ile Grafik Tasarım ön lisans programını 2022-2024 yılları arasında onur öğrencisi olarak tamamladım.',
+          'lang-experience-title': 'İş Deneyimi',
+          'lang-experience-text': 'Şu anda Mita Corporation\'da stajyer olarak React ve Node.js kullanarak bir internet radyo uygulaması geliştiriyor ve Tokyo Game Show 2024 için kitapçık ve video hazırlıyorum. Öncesinde Devri Robotik\'te scooter kiralama uygulaması için bir GitHub projesi oluşturdum ve yapay zeka alışveriş öneri algoritması üzerinde çalıştım. TED Üniversitesi\'nde TEDU App projesinde çalışan öğrenci olarak Flutter ile ön-uç geliştirme yaptım. Biriktir\'de staj kapsamında bir sosyal girişimcilik şirketi için Figma kullanarak kullanıcı arayüzleri ve oyun mekaniği tasarladım.',
+          'lang-clubs-title': 'Öğrenci Toplulukları',
+          'lang-clubs-text': 'ALECTED ekibinde 2024\'ten beri takım kaptanı, 2022-2024 arasında Medya Takımı kaptanı ve 2023\'ten beri Yazılım Takımı üyesi olarak çalışıyorum. Takımda Shell Eco-Marathon 2023 Fransa\'ya katılan ilk prototip aracın yapımında katkıda bulundum. Ayrıca Uzak Doğu Kültür Topluluğu\'nun kurucu üyesi ve 2022-2023 yılları arasında Denetleme Kurulu\'nun kurucu başkanı olarak görev aldım.',
+          'lang-programming-text': 'Programlamada ağırlıklı olarak Java, JavaScript ve C kullanıyorum, aynı zamanda C#, Python, React, Node.js ve Flutter öğreniyor ve kullanıyorum. Oyun geliştirme, mobil uygulama geliştirme ve yapay zeka alanlarında kendimi geliştirmeye devam ediyorum.',
+          'lang-interests-text': 'Tüm bunların yanında tarih ve kültür konularıyla ilgilenmeyi seviyorum.',
+          'lang-resume-title': 'Özgeçmişim',
+          'lang-download-resume': 'Özgeçmiş İndir',
+          'lang-detailed-cv': 'İngilizce Detaylı CV (PDF)',
+          'lang-graphic-cv': 'İngilizce Grafik CV (PDF)',
+          'lang-cv-preview': 'CV Önizleme',
+          'lang-open-new-tab': 'Yeni Sekmede Aç',
+          'lang-pdf-not-supported': 'PDF görüntüleyici tarayıcınız tarafından desteklenmiyor.',
+          'lang-download-pdf': 'PDF\'i İndir'
+        },
+        en: {
+          'lang-about-title': 'About Me',
+          'lang-about-intro': 'I am a Computer Engineering student primarily working in coding, design, and drawing fields. I use technologies like Unity, VS Code, React, Node.js, and Flutter for software projects. For design and drawing, I use Figma, Photoshop, Illustrator, and Clip Studio Paint.',
+          'lang-education-title': 'Education',
+          'lang-education-text': 'I am pursuing a Bachelor\'s degree in Computer Engineering at TED University with a 2.98 GPA and completed a minor program in International Relations with a 4.00 GPA. I also completed an Associate\'s degree in Graphic Design at Istanbul University as an honor student between 2022-2024 with a 3.08 GPA.',
+          'lang-experience-title': 'Work Experience',
+          'lang-experience-text': 'I am currently working as an intern at Mita Corporation, developing an internet radio application using React and Node.js and preparing a booklet and video for Tokyo Game Show 2024. Previously, I created a GitHub project for a scooter rental application at Devri Robotik and worked on an AI shopping recommendation algorithm. At TED University, I worked as a student employee on the TEDU App project, doing front-end development with Flutter. At Biriktir, I designed user interfaces and game mechanics for a social entrepreneurship company using Figma as part of an internship.',
+          'lang-clubs-title': 'Student Clubs',
+          'lang-clubs-text': 'I have been working as the team captain at ALECTED team since 2024, Media Team captain from 2022-2024, and Software Team member since 2023. I contributed to the construction of the first prototype vehicle that participated in Shell Eco-Marathon 2023 France. Additionally, I am a founding member of the Far East Culture Club and served as the founding president of the Supervisory Board from 2022-2023.',
+          'lang-programming-text': 'In programming, I mainly use Java, JavaScript, and C, while also learning and using C#, Python, React, Node.js, and Flutter. I continue to develop myself in game development, mobile application development, and artificial intelligence.',
+          'lang-interests-text': 'Besides all these, I enjoy exploring history and culture.',
+          'lang-resume-title': 'My Resume',
+          'lang-download-resume': 'Download Resume',
+          'lang-detailed-cv': 'Detailed CV in English (PDF)',
+          'lang-graphic-cv': 'Graphic CV in English (PDF)',
+          'lang-cv-preview': 'CV Preview',
+          'lang-open-new-tab': 'Open in New Tab',
+          'lang-pdf-not-supported': 'PDF viewer is not supported by your browser.',
+          'lang-download-pdf': 'Download PDF'
         }
-      });
+      };
       
       // Simple page-specific theme content updater
       function updateAboutPageThemeContent() {

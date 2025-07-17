@@ -1,81 +1,142 @@
-// List of sentences for typing animation
-var _CONTENT = [ 
-	"Ben kodluyorum.", 
-	"Ben tasarlıyorum.", 
-	"Ben çiziyorum."
-];
-
-// Variables for typing effect
-var _PART = 0;
-var _PART_INDEX = 0;
-var _INTERVAL_VAL;
-var _ELEMENT = null;
-var _CURSOR = null;
-
-// Initialize typing effect
-function initTypingEffect() {
-  _ELEMENT = document.querySelector("#text");
-  _CURSOR = document.querySelector("#cursor");
-  
-  if (_ELEMENT && _CURSOR) {
-    _PART = 0;
-    _PART_INDEX = 0;
-    if (_INTERVAL_VAL) {
-      clearInterval(_INTERVAL_VAL);
+// Typing Animation
+class TypingAnimation {
+  constructor(element, texts, typingSpeed = 100, deleteSpeed = 50, pauseTime = 1000) {
+    this.textElement = element;
+    this.texts = texts;
+    this.typingSpeed = typingSpeed;
+    this.deleteSpeed = deleteSpeed;
+    this.pauseTime = pauseTime;
+    
+    this.textIndex = 0;
+    this.charIndex = 0;
+    this.isDeleting = false;
+    this.isWaiting = false;
+    this.isActive = true;
+    
+    this.cursorElement = document.getElementById('cursor');
+    if (this.cursorElement) {
+      this.cursorElement.textContent = '|';
     }
-    _INTERVAL_VAL = setInterval(Type, 100);
+    
+    this.type();
+  }
+  
+  type() {
+    if (!this.isActive || !this.texts || this.texts.length === 0) return;
+    
+    // Current text based on index
+    const currentText = this.texts[this.textIndex];
+    
+    // Calculate typing/deleting speed
+    let speed = this.isDeleting ? this.deleteSpeed : this.typingSpeed;
+    
+    if (this.isDeleting) {
+      // Remove character
+      this.textElement.textContent = currentText.substring(0, this.charIndex - 1);
+      this.charIndex--;
+    } else {
+      // Add character
+      this.textElement.textContent = currentText.substring(0, this.charIndex + 1);
+      this.charIndex++;
+    }
+    
+    // If finished typing current text
+    if (!this.isDeleting && this.charIndex === currentText.length) {
+      speed = this.pauseTime;
+      this.isDeleting = true;
+      this.isWaiting = true;
+    }
+    
+    // If deleted all text
+    if (this.isDeleting && this.charIndex === 0) {
+      this.isDeleting = false;
+      this.textIndex = (this.textIndex + 1) % this.texts.length;
+      this.isWaiting = true;
+    }
+    
+    setTimeout(() => this.type(), speed);
+  }
+  
+  reset(newTexts) {
+    // Stop current animation cycle
+    this.isActive = false;
+    
+    // Reset everything
+    setTimeout(() => {
+      this.texts = newTexts;
+      this.textIndex = 0;
+      this.charIndex = 0;
+      this.isDeleting = false;
+      this.isWaiting = false;
+      this.textElement.textContent = '';
+      this.isActive = true;
+      this.type(); // Restart typing with new texts
+    }, 50);
   }
 }
 
-// Implements typing effect
-function Type() { 
-  if (!_ELEMENT || !_CURSOR) return;
+// Shared language utilities
+const languageUtils = {
+  // Switch language across the site
+  switchLanguage: function(language) {
+    // Update html lang attribute
+    document.documentElement.setAttribute('lang', language);
+    document.documentElement.setAttribute('data-language', language);
+    
+    // Find translations object - could be global or page-specific
+    let translations;
+    if (typeof aboutTranslations !== 'undefined') {
+      translations = aboutTranslations;
+    } else if (typeof window.translations !== 'undefined') {
+      translations = window.translations;
+    } else {
+      return; // No translations found
+    }
+    
+    // Update all elements with language classes
+    if (translations[language]) {
+      Object.keys(translations[language]).forEach(key => {
+        const elements = document.querySelectorAll('.' + key);
+        elements.forEach(el => {
+          el.textContent = translations[language][key];
+        });
+      });
+    }
+    
+    // Update typing animation if it exists
+    if (window.typingAnimation && window.typingAnimationTexts) {
+      const texts = window.typingAnimationTexts[language];
+      if (texts) {
+        window.typingAnimation.reset(texts);
+      }
+    }
+    
+    // Update language toggle buttons
+    const langToggles = document.querySelectorAll('#languageToggle, #mobileLanguageToggle');
+    langToggles.forEach(toggle => {
+      const currentLang = toggle.querySelector('.current-lang');
+      const otherLang = toggle.querySelector('.other-lang');
+      
+      if (currentLang && otherLang) {
+        currentLang.textContent = language.toUpperCase();
+        otherLang.textContent = language === 'tr' ? 'EN' : 'TR';
+        
+        // Toggle text colors for emphasis
+        currentLang.classList.remove('text-gray-medium');
+        otherLang.classList.add('text-gray-medium');
+      }
+    });
+    
+    // Save preference to localStorage
+    localStorage.setItem('language', language);
+  },
   
-	// Get substring with 1 character added
-	var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-	_ELEMENT.innerHTML = text;
-	_PART_INDEX++;
-
-	// If full sentence has been displayed then start to delete the sentence after some time
-	if(text === _CONTENT[_PART]) {
-		// Hide the cursor
-		_CURSOR.style.display = 'none';
-
-		clearInterval(_INTERVAL_VAL);
-		setTimeout(function() {
-			_INTERVAL_VAL = setInterval(Delete, 50);
-		}, 1000);
-	}
-}
-
-// Implements deleting effect
-function Delete() {
-  if (!_ELEMENT || !_CURSOR) return;
-  
-	// Get substring with 1 character deleted
-	var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-	_ELEMENT.innerHTML = text;
-	_PART_INDEX--;
-
-	// If sentence has been deleted then start to display the next sentence
-	if(text === '') {
-		clearInterval(_INTERVAL_VAL);
-
-		// If current sentence was last then display the first one, else move to the next
-		if(_PART == (_CONTENT.length - 1))
-			_PART = 0;
-		else
-			_PART++;
-		
-		_PART_INDEX = 0;
-
-		// Start to display the next sentence after some time
-		setTimeout(function() {
-			_CURSOR.style.display = 'inline-block';
-			_INTERVAL_VAL = setInterval(Type, 100);
-		}, 200);
-	}
-}
+  // Initialize language settings from localStorage
+  initLanguage: function() {
+    const savedLanguage = localStorage.getItem('language') || 'tr';
+    this.switchLanguage(savedLanguage);
+  }
+};
 
 // Reveal animations when scrolling
 function revealOnScroll() {
@@ -104,6 +165,9 @@ window.addEventListener('load', function() {
   if (!location.hash && location.pathname === '/index.html') {
     location.hash = '#home';
   }
+  
+  // Initialize language on page load
+  languageUtils.initLanguage();
 });
 
 // Document ready function
@@ -123,11 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
       loop: true,
       autoplayVideos: true
     });
-  }
-  
-  // Initialize typing effect if on home page
-  if (document.getElementById('text') && document.getElementById('cursor')) {
-    initTypingEffect();
   }
   
   // Theme toggle functionality
@@ -241,6 +300,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
     });
+  });
+  
+  // Set up language toggle handlers
+  const langToggles = document.querySelectorAll('#languageToggle, #mobileLanguageToggle');
+  langToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const currentLanguage = document.documentElement.getAttribute('data-language');
+      const newLanguage = currentLanguage === 'tr' ? 'en' : 'tr';
+      languageUtils.switchLanguage(newLanguage);
+    });
+  });
+  
+  // Listen for language changes to update typing animation
+  document.addEventListener('languageChanged', function(e) {
+    const language = e.detail.language;
+    if (window.typingAnimation && window.typingAnimationTexts && window.typingAnimationTexts[language]) {
+      window.typingAnimation.reset(window.typingAnimationTexts[language]);
+    }
   });
   
   // Call reveal animations
